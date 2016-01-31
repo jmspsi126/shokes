@@ -1,0 +1,40 @@
+
+
+
+        <?php if(($i-2)%4 == 0||($i-3)%4 ==0): ?>
+
+            <div class= 'col-md-6' style = "text-align:-webkit-center;padding-top:5%;height:550px">
+        <?php else: ?>
+                    <div class= 'col-md-6' style = "text-align:-webkit-center;padding-top:5%;height:550px;background-color:#EFEDEE">
+        <?php endif; ?>
+
+                <div>
+
+                    <h2 style = "font-family:'Raleway'"><?php echo e($project->name); ?></h2>
+                    <h5><?php echo e($project->status); ?></h5>
+
+                    <h4>Difficulty Level</h4>
+                    <h5><?php echo e($project->difficulty); ?></h5>
+
+                    <h4>Development Skills</h4>
+
+
+                    <?php /*<div class = "row" >*/ ?>
+
+
+                        <?php /*<?php foreach($skills as $project->description): ?>{*/ ?>
+                        <?php /*<img src="<?php echo e(asset($skill)); ?>">*/ ?>
+                        <?php /*}*/ ?>
+
+                        <?php /*<?php endforeach; ?>*/ ?>
+
+                    <?php /*</div>*/ ?>
+
+                    <h3 style="font-family:'Raleway';font-weight:100">Sponsed by:</h3>
+
+
+                    <a href ="<?php echo e(url('/project',$project->id)); ?>" ><button class="btn btn-default btn-lg">Start</button></a>
+                </div>
+            </div>
+
+

@@ -1,0 +1,32 @@
+<?php $__env->startSection('addheader'); ?>
+    <link href="<?php echo e(asset('css/projectlist.css')); ?>" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Emilys+Candy' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:200,300' rel='stylesheet' type='text/css'>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+    <div class = 'container-fuild'>
+
+        <div class= 'row'>
+
+            <?php /* */$i=1/* */ ?>
+
+
+        <?php foreach($projects as $project): ?>
+
+
+                <?php echo $__env->make('project.show',[$project], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+                <?php /* */$i+=1/* */ ?>
+
+
+            <?php endforeach; ?>
+
+
+
+        </div>   <!-- close of row -->
+    </div>  <!-- close of container -->
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

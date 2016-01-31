@@ -1,0 +1,62 @@
+	<?php $__env->startSection('body'); ?>
+		<div class="container-fluid menu-hidden">
+			<?php echo $__env->make('company.sidebar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+			<div id="content">
+				<?php echo $__env->make('company.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+				<div class="col-sm-10 col-sm-offset-1" >
+					<div class="widget row widget-inverse">
+	
+						<!-- Widget heading -->
+						<div class="widget-head">
+							<h4 class="heading">Edit Project</h4>
+						</div>
+						<!-- // Widget heading END -->
+						
+						<div class="widget-body">
+							<div class="innerLR">
+								<form class="form-horizontal" action="<?php echo URL::route('company.store'); ?>" role="form" method="post">
+								<input type="hidden" name="_token" id="_token" value="<?php echo e(csrf_token()); ?>">
+								<input type="hidden" name="project_id" value="<?php echo $projects->id; ?>">
+			                       <?php foreach([
+			                            'name' => 'Name',
+			                            'description' => 'Description',
+			                            'skills' => 'Skills',
+			                            'environment' => 'Environment',
+			                            'difficulty' => 'Difficulty',
+			                            'status' => 'Status',
+			                        ] as $key => $value): ?>
+			                        <div class="form-group">
+		                                <div class="col-sm-2">
+		                                    <label class="col-sm-2 control-label"><?php echo Form::label($key, $value); ?></label>
+		                                </div>
+		                                <div class="col-sm-10">
+			                                <?php if($key === 'description'): ?> 
+		                                		<?php echo Form::textarea($key, $projects->{$key}, ['class' => 'form-control'], ['size' => '95x5']); ?>                       
+		                                    <?php else: ?>
+		                                   		<?php echo Form::text($key, $projects->{$key}, ['class' => 'form-control']); ?>
+
+		                                   	<?php endif; ?>
+		                                </div>
+			                        </div>
+			                        <?php endforeach; ?>
+			                        <div class="row margin-bottom-xs">
+			                            <div class="col-sm-4 col-sm-offset-4">
+			                                <button type="submit" class="btn btn-default margin-bottom-xs" style="margin-left: 34%;" >Register</button>
+			                                <a href="<?php echo URL::route('company'); ?>" class="btn btn-info pull-right margin-bottom-xs">Cancel</a>
+			                            </div>
+			                        </div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<?php $__env->stopSection(); ?>
+	
+	<?php $__env->startSection('custom-scripts'); ?>
+		
+	<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('company.main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

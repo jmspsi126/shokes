@@ -1,0 +1,304 @@
+<?php $__env->startSection('addheader'); ?>
+    <link href="<?php echo e(asset('css/profile.css')); ?>" rel="stylesheet">
+	<link href='http://fonts.googleapis.com/css?family=Raleway:200,300' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+    <link rel="stylesheet" type="text/css"href="https://fonts.googleapis.com/css?family=Open+Sans:400,600">
+
+    <style>
+    	#tip {
+		    background-color:white;
+		    border:1px solid blue;
+		    position:absolute;
+		    left:-200px;
+		    top:100px;
+		}
+    </style>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+	<?php if($user->tasks->count() > 0): ?>
+	<div class="row">
+		<div class="col-md-12 photocover" >
+			<h2 class ="title"><?php echo e($user->tasks()->first()->project()->get()->first()->name); ?></h2>
+			<h3 class ="title">Current Project</h3>
+			<img src="<?php echo e(asset('img/progress.png')); ?>" style = "opacity:0.6;margin-top:2%">
+            <h2 class = "title space"><?php echo e($user->name); ?></h2>
+				 <?php if($prevTask != ''): ?>
+	                 <div class = "col-md-2 col-md-offset-2 module">
+	                 	<h3>Module: Sign in sign up</h3>
+	  					<h6>Task Name: <?php echo e($prevTask->name); ?></h6>
+	  					<h6>Project Name:<?php echo e($prevTask->project->name); ?></h6>
+	                 </div>
+	             <?php else: ?>
+		             <div class = "col-md-2 col-md-offset-2 module">
+	                 	<h3>Module: Sign in sign up</h3>
+	  					<h6>Task Name: </h6>
+	  					<h6>Project Name: </h6>
+	                 </div>
+                 <?php endif; ?>
+
+                 <div class="col-md-1 arrow">
+                 	<h1 class ="large">- - -</h1>
+                 </div>
+
+                 <div class = "col-md-2 currentModule">
+                 		<h3>Current Module</h3>
+                 		
+  						<h6>Task Name: <?php echo e($currentTask->name); ?></h6>
+					 	<h6>Project Name:<?php echo e($currentTask->project->name); ?></h6> 
+                 </div>
+
+                 <div class="col-md-1 arrow">
+                 	<h1 class ="large">- - -</h1>
+                 </div>         
+				<?php if($nextTask != ''): ?>
+		   			<div class = "col-md-2 module">
+		   				<h3>Module: Sign in sign up </h3>                 
+						<h6>Task Name: <?php echo e($nextTask->name); ?></h6>
+						<h6>Project Name:<?php echo e($nextTask->project->name); ?></h6>
+	                </div>
+	           	<?php else: ?>
+	           		<div class = "col-md-2 module">
+		   				<h3>Module: Sign in sign up </h3>                 
+						<h6>Task Name: </h6>
+						<h6>Project Name:</h6>
+	                </div>
+	           	<?php endif; ?>
+
+        	</div>
+
+                 <div class = "col-md-12 space small-size">
+                 	<div class = "col-md-4 col-md-offset-4 center">
+						<?php /*$user->tasks()->first()->id*/ ?>
+                 		<a href = "<?php echo e(url('/project',2 )); ?>"><button type="submit" class="btn button btn-default">Continue</button></a>
+                 	</div>
+                 </div>
+
+			<div class="col-md-12 data-container">
+
+				<div class = "col-md-6 small-size">
+					<div class = "col-md-12 space">
+						<h4 class = "title">ABOUT ME</h4>
+						<?php echo Form::open(array(null,null)); ?>
+
+						<input type="hidden" id = 'what' name="about" value="">
+						<section id = "editable" contenteditable="true">
+							<p id = "test"><?php echo e($resume->about); ?></p>
+						</section>
+						<?php echo Form::submit('Save',["class"=>'btn btn-success','onclick'=>'setValue(this);return false;']); ?>
+
+						<?php echo Form::close(); ?>
+
+
+					</div>
+
+					<div class = "col-md-12 small-size" style="position:relative;">
+						<h4 class = "title"> SKILL SET</h4>
+						<canvas width='500' height="180" id="c1"></canvas> 
+						<canvas id="tip" width=100 height=25></canvas>
+					</div> 
+
+					<div class = "col-md-12 small-size">
+						<h4 class = "title">EDUCATION&EXPERIENCE</h4>
+
+						<div class = "col-md-6 center">
+							<h5 class = "space">Individual Project</h5>
+
+							<?php /*<?php foreach($achievements as $achievement): ?>*/ ?>
+								<?php /*<div class = "box left">*/ ?>
+									<?php /*<h4>Rank:</h4>*/ ?>
+									<?php /*<h5>Project:<?php echo e($achievement->task->project()->get()->name); ?></h5>*/ ?>
+
+									<?php /*<h6>Model: <?php echo e($achievement->task); ?></h6>*/ ?>
+									<?php /*<h6>Total Point Gained: <?php echo e($achievement->points); ?></h6>*/ ?>
+									<?php /*<h6>Contributed Fields:</h6>*/ ?>
+									<?php /*<?php foreach($skills as $skill): ?>*/ ?>
+										<?php /*<img src="asset/<?php echo $skill->name; ?>">*/ ?>
+									<?php /*<?php endforeach; ?>*/ ?>
+								<?php /*</div>*/ ?>
+							<?php /*<?php endforeach; ?>*/ ?>
+							
+							
+								<?php foreach($achievements as $key => $achievement): ?>
+									<div class = "box left">
+										<h4>Rank:<?php echo e($key+1); ?></h4>
+										<h5><?php echo e($achievement->tasks->project->name); ?></h5>
+										<h6>Model: <?php echo e($achievement->tasks->name); ?></h6>
+										<h6>Total Point Gained: <?php echo e($achievement->overall_point); ?></h6>
+										<h6>Contributed Fields:</h6>
+									</div>
+								<?php endforeach; ?>
+						</div>
+
+						<div class = "col-md-6 center">
+							<h5>Group Project</h5>
+								<?php foreach($achievements as $key => $achievement): ?>
+									<div class="box left">
+										<h4>Rank:<?php echo e($key+1); ?></h4>
+										<h6>Rank:<?php echo e($achievement->tasks->name); ?></h6>
+										<h6>Total Point Gained: <?php echo e($achievement->overall_point); ?></h6>
+										<h6>Contributed Fields:</h6>
+									</div>
+								<?php endforeach; ?>
+						</div>
+					</div> 
+				</div>
+			<div class = "col-md-6 ">
+				<div class = "col-md-12 space">
+					<h4 class = "title">TALENT ANALYSIS</h4>
+				    <div id="main">
+				      <div id="sequence"></div>
+				      <div id="chart">
+				        <div id="explanation" style="visibility: hidden;">
+				          <span id="percentage"></span><br/>
+				          of visits begin with this sequence of pages
+				        </div>
+				      </div>
+				    </div>
+				    <div id="sidebar">
+				      <input type="checkbox" id="togglelegend"> Legend<br/>
+				      <div id="legend" style="visibility: hidden;"></div>
+				    </div>
+				    <script type="text/javascript" src=<?php echo e(asset('js/sequences.js')); ?>></script>
+				    <script type="text/javascript">
+				      // Hack to make this example display correctly in an iframe on bl.ocks.org
+				      d3.select(self.frameElement).style("height", "350px");
+				  </script> 
+				</div>
+			</div><!--Close of col!-->
+				<div class = "col-md-6 space">
+					<h4>Profile Viewed By</h4>
+					<h5>Company Name</h5>
+				</div>
+			</div>
+
+		</div><!--Close of Row!-->
+	<?php else: ?>
+		<div class="row text-center">
+			<a href="project">
+				Start work on your project now
+			</a>
+		</div>
+	<?php endif; ?>
+
+	<script type="text/javascript">
+
+		function setValue()
+		{
+			var data = '';
+			$('p#test').each(function() {
+					data = data + $(this).html()+'\n\r';
+				});
+			$('input#what').val(data);
+
+			$.ajax({ 
+                url : "<?php echo e(URL::route('profile.resumeStore')); ?>",
+                type : "get",
+                data : {'about':$('input#what').val()},
+                success : function(data) {
+                    alert("success");
+                }
+            });
+		};
+
+
+	</script>
+
+	<script type="text/javascript">
+		function rnd(n,m){
+			return parseInt(Math.random()*(m-n)+n);
+		}
+	
+	    function getMousePos(canvas, evt) {
+	        var rect = canvas.getBoundingClientRect();
+	        return {
+	          x: evt.clientX - rect.left,
+	          y: evt.clientY - rect.top
+	    	};
+	    }
+	
+		window.onload = function() {
+			var canvas = document.getElementById('c1');
+			var tipCanvas = document.getElementById('tip');
+			var gd = canvas.getContext('2d');
+			var tipCtx = tipCanvas.getContext('2d');
+	
+			var atext = [];
+			var aData = [];
+			var aLevel = [];
+			var rect = [];
+			var rectCount = 0;
+	
+			<?php foreach($skillUsers as $key=>$item): ?>
+				atext[<?php echo e($key); ?>] = '<?php echo e($item->skill->name); ?>';
+				aData[<?php echo e($key); ?>] = '<?php echo e($item->hour); ?>';
+				aLevel[<?php echo e($key); ?>] = '<?php echo e($item->level); ?>';
+			<?php endforeach; ?>
+			
+			var space = 20;
+			var topSpace = canvas.height*0.3;
+			var iMax=Math.max.apply(null,aData)
+			var w=canvas.width*0.07;
+			var lastR=0;
+			for(var i=0;i<aData.length;i++) {
+				var l=lastR+space;
+				var h=(aData[i]/iMax)*(canvas.height-topSpace);
+				var t=canvas.height-h;
+				gd.fillStyle='rgba(141, 164, 180, 1)';
+				gd.fillRect(l,t-15,w,h);
+				lastR=l+w;
+	
+				rect[rectCount] = {
+							'x' : l,
+							'y' : t-15,
+							'w' : w,
+							'h' : h,
+							'lv' : aLevel[i]
+						};
+				rectCount ++;
+	
+				gd.font = "15 px Georgia";
+				gd.fillText(atext[i], l+canvas.width*0.01, canvas.height*0.98);
+			}
+	
+	        canvas.addEventListener('mousemove', function(evt) {
+	            var mousePos = getMousePos(canvas, evt);
+				var hit = 0;
+				
+	            for (var i = 0; i < rectCount; i ++) {
+					if (mousePos.x >= rect[i].x && mousePos.x <= rect[i].x + rect[i].w) {
+						if (mousePos.y >= rect[i].y && mousePos.y <= rect[i].y + rect[i].h) {
+				            tipCanvas.style.left = (mousePos.x) + "px";
+				            tipCanvas.style.top = (mousePos.y - 10) + "px";
+				            tipCtx.clearRect(0, 0, tipCanvas.width, tipCanvas.height);
+				            //                  tipCtx.rect(0,0,tipCanvas.width,tipCanvas.height);
+				            tipCtx.fillText('Level: ' + rect[i].lv, 5, 15);	
+				            hit = 1;	
+				            break;
+						}
+					} 
+	            }
+	            
+				if (hit == 0) {
+					tipCanvas.style.left = "-200px";
+				}
+	            
+	        }, false);
+		}
+	</script>
+
+
+
+	<script type="text/javascript">
+	  // Hack to make this example display correctly in an iframe on bl.ocks.org
+	  d3.select(self.frameElement).style("height", "700px");
+   	</script>
+
+
+<?php $__env->stopSection(); ?>
+
+
+
+<?php echo $__env->make('app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

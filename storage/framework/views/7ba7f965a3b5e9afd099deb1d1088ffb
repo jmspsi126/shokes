@@ -1,0 +1,116 @@
+	<?php $__env->startSection('body'); ?>
+		<div class="container-fluid menu-hidden">
+			<?php echo $__env->make('company.sidebar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+			<div id="content">
+				<?php echo $__env->make('company.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+				<div class="col-table-row">
+					<div class="col-app col-unscrollable">
+						<div class="col-app">
+							<div class="col-table">
+								<div class="col-separator-h box"></div>	
+								<div>   
+	                                <?php if($errors -> has()): ?>
+	                                    <div class="alert alert-danger alert-dismissibl fade in">
+	                                        <button type="button" class="close" data-dismiss="alert">
+	                                            <span aria-hidden="true">&times;</span>
+	                                            <span class="sr-only">Close</span>
+	                                        </button>
+	                                        <?php foreach($errors -> all() as $error): ?>
+	                                            <p><?php echo e($error); ?></p>		
+	                                        <?php endforeach; ?>
+	                                    </div>
+	                                <?php endif; ?> 
+	            			        
+	                                <?php if(isset($alert)): ?> 
+	                                    <div class="alert alert-<?php echo $alert['type']; ?> alert-dismissibl fade in">
+	                                        <button type="button" class="close" data-dismiss="alert">
+	                                            <span aria-hidden="true">&times;</span>
+	                                                <span class="sr-only">Close</span>
+	                                        </button>
+	                                        <p>
+	                                            <?php echo $alert['msg']; ?>
+
+	                                        </p>
+	                                    </div>
+	                                <?php endif; ?> 
+	                            </div>
+								<div class="col-table-row">
+									<div class="row-app">
+										<div class="col-md-12">
+											<div class="col-separator box bg-gray">
+												<div class="innerAll bg-white">
+													<!-- Total bookings & sort by options -->
+													<div class="heading-buttons innerLR box">
+														<h4 class="margin-none innerTB pull-left">Task</h4>
+														<a href="<?php echo URL::route('task.create',$projectId); ?>" class="btn-xs pull-right btn btn-primary"><i class="fa fa-fw fa-plus"></i> Add task</a>
+														<div class="clearfix"></div>
+													</div>
+													<!-- // Total bookings & sort by options END -->
+													
+													<!-- Table -->
+													<table class="table table-bordered table-condensed table-striped table-primary table-vertical-center checkboxs">
+														<thead>
+															<tr>
+																<th class="center">Number</th>
+																<th class="center">Name</th>
+																<th class="center">Description</th>
+																<th class="center">EstimateTime</th>
+																<th class="center">Sequence</th>
+																<th class="center" style="width: 150px;">Actions</th>
+															</tr>
+														</thead>
+														<tbody>
+															<?php foreach($tasks as $key => $task): ?>
+					                                            <tr>
+					                                                <td><?php echo e($key + 1); ?></td>
+					                                                <td><?php echo e($task->name); ?></td>
+					                                                <td><?php echo e($task->description); ?></td>
+					                                                <td><?php echo e($task->estimateTime); ?></td>
+					                                                <td><?php echo e($task->sequence); ?></td>
+					                                                
+					                                                <td class="center">
+																		<div class="btn-group btn-group-sm">
+																			<a href="<?php echo URL::route('task.edit', $task['id']); ?>" class="btn btn-success"><i class="fa fa-pencil"></i></a>
+																			<a data-url="<?php echo URL::route('task.delete', $task->id); ?>" onclick="deleteTask(this);" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
+																		</div>
+																	</td>
+					                                            </tr>
+                                       					 	<?php endforeach; ?>
+														</tbody>
+													</table>
+													<!-- // Table END -->
+													<div class="row">
+														<?php echo $tasks->render(); ?>
+
+													</div>
+													<div class="clearfix"></div>
+													<!-- // Pagination END -->
+												</div>
+												<div class="col-separator-h box"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<?php $__env->stopSection(); ?>
+	
+	<?php $__env->startSection('scripts'); ?> 
+        <script type="text/javascript">
+            function deleteTask(obj) {
+                bootbox.confirm('Are you sure?', function(result) {
+                    if (result) {
+                        location.href=$(obj).attr('data-url');
+                    }
+                });    
+            }
+        </script>
+    <?php $__env->stopSection(); ?>
+    
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('company.main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

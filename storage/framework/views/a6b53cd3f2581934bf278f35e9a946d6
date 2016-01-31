@@ -1,0 +1,111 @@
+<?php $__env->startSection('body'); ?>
+	<link href="<?php echo e(asset('css/resume.css')); ?>" rel="stylesheet">
+
+	<div class="container-fluid menu-hidden">
+		<?php echo $__env->make('company.sidebar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+		<div id="content">
+			<?php echo $__env->make('company.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+			<div class="innerLR" style = "padding-left:5%">
+				<div class="separator"></div>
+				<div class="lead center innerTB">
+
+				<div class="row col-offset-2" >
+					<div class="grid">
+					<?php foreach($tasks as $key => $task): ?>
+							<div class="grid-item">
+								<div class="grid-item-content">
+									<h3 style = "padding-top:15%;font-weight:300;height:70px;overflow:auto"><?php echo e($task->name); ?></h3>
+									<h5 style = margin-bottom:5%>Expire on 5 days</h5>
+
+									<div class = "col-md-1 col-md-offset-3">
+										<span class = "glyphicon glyphicon-align-center" style = font-size:0.7em;color:grey></span>
+
+									</div>
+
+									<div class = "col-md-5" style = "margin-top:5%">
+
+										<h5 style = font-weight:300;color:grey>Progress</h5>
+									</div>
+									<div class = "bar col-md-8 bar-space col-md-offset-2">
+										<span class = "bar-unfill" style ="width:100%">
+												<span class = "bar-fill" style = "height:20%">
+											</span>
+										</span>
+
+										<h5 style = "font-weight: 300">75% of the task is completed</h5>
+									</div>
+
+								</div>
+
+								<div class="grid-item-content hide">
+									<h2 style = "padding-top:10%;font-weight:300;"><?php echo e($task->name); ?></h2>
+									<h5 style = "margin-top:2%">Expire on 5 days</h5>
+									<div class = "col-md-6 col-md-offset-3">
+										<span class = "glyphicon glyphicon-check"></span><h4>Task completed</h4>
+									</div>
+									<h4>Tasks on progress</h4>
+									<p>
+									</p>
+
+								</div>
+
+
+							</div>
+
+
+					<?php endforeach; ?>
+
+				</div>
+			</div>
+		</div>
+	</div>
+<?php $__env->stopSection(); ?>
+
+
+<?php $__env->startSection('scripts'); ?>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.js"></script>
+
+	<script type="text/javascript">
+		function deleteTask(obj) {
+			bootbox.confirm('Are you sure?', function(result) {
+				if (result) {
+					location.href=$(obj).attr('data-url');
+				}
+			});
+		}
+
+		$(document).ready(function() {
+
+			$('.blog').click(function(){
+				$(this).find("div.detail").toggleClass("show");
+				$(this).find("div.detail_right").toggleClass("show");
+			});
+
+		});
+
+
+		// external js: masonry.pkgd.js
+
+		$(document).ready( function() {
+
+			var $grid = $('.grid').masonry({
+				columnWidth: 120,
+				itemSelector: '.grid-item'
+			});
+
+			$grid.on( 'click', '.grid-item-content', function() {
+				$( this ).parent('.grid-item').toggleClass('is-expanded');
+				$( this).toggleClass('hide');
+				$( this).siblings().toggleClass('hide');
+				$grid.masonry();
+			});
+
+		});
+
+
+	</script>
+<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('company.main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

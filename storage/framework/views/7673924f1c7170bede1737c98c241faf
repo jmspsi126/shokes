@@ -1,0 +1,17 @@
+<?php $__env->startSection('content'); ?>
+
+	<div class="row">
+		<div class="col-md-12" style = "text-align:center" >
+
+			<img src="<?php echo e(asset('img/lock.png')); ?>" style = "opacity:0.6;margin-top:2%">
+			<h3> Your resume is not built yet, start working on some project now!</h3>
+				<a href = "<?php echo e(url('/project')); ?>">
+			<button class="btn btn-default btn-lg" style = "margin-top:1%">Looking for project</button>
+			</a>
+
+		</div>
+	</div>	
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

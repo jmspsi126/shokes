@@ -1,0 +1,196 @@
+<?php $__env->startSection('addheader'); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('overview'); ?>
+<div class="container">
+  <h2>Google UCI Programming Recruiment</h2>
+  <p>The list demostrates the qualified candidte who have comprehensive skills to handle the Google project based on:</p>
+  <p><b>learning ability, programming ability, communicative skills and coding simplicity</b></p>
+  <div class = "row">
+
+    <div class = "col-md-2">
+      <h1>40</h1>
+      <h6>Review</h6>         
+    </div>
+    
+    <div class = "col-md-2"> 
+      <h1>24</h1>
+      <h6>Maximun</h6>
+    </div>
+
+    <div class = "col-md-2">
+      <h1>15</h1>
+      <h6>Average Score</h6>
+    </div>
+
+  </div>
+
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Profile</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+        <th>Over Points</th>
+
+        <th>More details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><img src="<?php echo e(asset('img/profile1.png')); ?>" style = "height:30px; width:30px"></td>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+        <td>7.9</td>
+        <td><a>Resume</a></td>
+      </tr>
+      <tr>
+              <td><img src="<?php echo e(asset('img/profile1.png')); ?>" style = "height:30px; width:30px"></td>
+
+        <td>Mary</td>
+        <td>Moe</td>
+        <td>mary@example.com</td>
+        <td>7.8</td>
+        <td><a>Resume</a></td>
+
+      </tr>
+      <tr>
+              <td><img src="<?php echo e(asset('img/profile1.png')); ?>" style = "height:30px; width:30px"></td>
+
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+        <td>7.67</td>
+        <td><a>Resume</a></td>
+      </tr>
+
+      <tr>
+              <td><img src="<?php echo e(asset('img/profile1.png')); ?>" style = "height:30px; width:30px"></td>
+
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+        <td>7.67</td>
+        <td><a>Resume</a></td>
+      </tr>
+
+            <tr>
+                    <td><img src="<?php echo e(asset('img/profile1.png')); ?>" style = "height:30px; width:30px"></td>
+
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+        <td>7.67</td>
+        <td><a>Resume</a></td>
+      </tr>
+
+            <tr>
+                    <td><img src="<?php echo e(asset('img/profile1.png')); ?>" style = "height:30px; width:30px"></td>
+
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+        <td>7.67</td>
+        <td><a>Resume</a></td>
+      </tr>
+
+            <tr>
+                    <td><img src="<?php echo e(asset('img/profile1.png')); ?>" style = "height:30px; width:30px"></td>
+
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+        <td>7.67</td>
+        <td><a>Resume</a></td>
+      </tr>
+
+            <tr>
+                    <td><img src="<?php echo e(asset('img/profile1.png')); ?>" style = "height:30px; width:30px"></td>
+
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+        <td>7.67</td>
+        <td><a>Resume</a></td>
+      </tr>
+
+            <tr>
+                    <td><img src="<?php echo e(asset('img/profile1.png')); ?>" style = "height:30px; width:30px"></td>
+
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+        <td>7.67</td>
+        <td><a>Resume</a></td>
+      </tr>
+
+            <tr>
+                    <td><img src="<?php echo e(asset('img/profile1.png')); ?>" style = "height:30px; width:30px"></td>
+
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+        <td>7.67</td>
+        <td><a>Resume</a></td>
+      </tr>
+
+            <tr>
+                    <td><img src="<?php echo e(asset('img/profile1.png')); ?>" style = "height:30px; width:30px"></td>
+
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+        <td>7.67</td>
+        <td><a>Resume</a></td>
+      </tr>
+
+            <tr>
+                    <td><img src="<?php echo e(asset('img/profile1.png')); ?>" style = "height:30px; width:30px"></td>
+
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+        <td>7.67</td>
+        <td><a>Resume</a></td>
+      </tr>
+
+            <tr>
+                    <td><img src="<?php echo e(asset('img/profile1.png')); ?>" style = "height:30px; width:30px"></td>
+
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+        <td>7.67</td>
+        <td><a>Resume</a></td>
+      </tr>
+
+            <tr>
+                    <td><img src="<?php echo e(asset('img/profile1.png')); ?>" style = "height:30px; width:30px"></td>
+
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+        <td>7.67</td>
+        <td><a>Resume</a></td>
+      </tr>
+
+            <tr>
+                    <td><img src="<?php echo e(asset('img/profile1.png')); ?>" style = "height:30px; width:30px"></td>
+
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+        <td>7.67</td>
+        <td><a>Resume</a></td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

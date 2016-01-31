@@ -1,0 +1,48 @@
+.title{
+
+	font-family:lato;
+	font-weight:300;
+	color:rgb(125, 142, 167);
+}
+
+.center{
+
+	margin-top: 8%;
+	border-bottom: solid 2px #dce3e8;
+
+}
+
+.space{
+	text-align:center;
+	vertical-align: middle;
+	border-radius: 20px;
+	padding: 30px !important;
+	margin-top:5%;
+}
+
+.active{
+    background: #dce3e8;
+}
+
+.numberCircle {
+    border-radius: 50%;
+    behavior: url(PIE.htc); /* remove if you don't care about IE8 */
+
+    width: 46px;
+    height: 46px;
+    border: 1px solid #666;
+    color: #666;
+    text-align: center;
+    font-weight: 300;
+    padding:5px;
+}
+
+.upload{
+	text-align: center;
+	border:dashed 1px grey;
+	padding:10px !important;
+}
+
+.input_{
+	border:none;
+}
