@@ -11,7 +11,7 @@ use App\skill as SkillModel;
 
 class TaskController extends Controller { 
 	
-	public function index() {
+	public function index($projectId) {
 		
 		$param['pageNo'] = 1;
 		$param['tasks'] = TaskModel::paginate(10);
@@ -40,12 +40,10 @@ class TaskController extends Controller {
 		$rules = ['name' => 'required',
 		'description' => 'required',
 		'estimateTime' => 'required',
-		'sequence' => 'required',
 		];
 
-
 		$validator = Validator::make(Input::all(), $rules);
-	
+
 		if ($validator->fails()) {
 			return Redirect::back()
 			->withErrors($validator)
@@ -81,11 +79,11 @@ class TaskController extends Controller {
 		return Redirect::route('project.view', $projectId)->with('alert', $alert);
 	}
 	
-	public function edit($id) {
+	public function edit($projectId,$id) {
 		$param['pageNo'] = 1;
 		$result = TaskModel::find($id);
 		$param['tasks'] = $result;
-	
-		return View::make('company.task.edit')->with($param);
+		$param['projectId '] = $projectId;
+		return View('company.task.edit')->with($param);
 	}
 }

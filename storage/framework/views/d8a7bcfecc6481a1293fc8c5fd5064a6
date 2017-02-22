@@ -1,0 +1,92 @@
+
+<?php $__env->startSection('content'); ?>
+
+ <div class="container">
+          <div class="row">
+            <div class="management-title-container">
+              <h2 class="management-title">Management</h2>
+              <p class="management-after-title">In Progress</p>
+              <img class="management-img-4" src="/img/management-header-img-2.png" alt="">
+            </div>
+          </div>
+        </div>
+
+   <main class="management-main">
+          <div class="container">
+            <section class="management-create-project">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="col-sm-8 col-md-9">
+                    <div class="management-create-project-container">
+                      <img class="create-project-img-1" src="/img/create-project-img-1.png" alt="">
+                      <h3 class="management-create-project-title">Create a New Project</h3>
+                      <p class="management-create-project-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa.</p>
+                      <img class="create-project-img-2" src="/img/create-project-img-2.png" alt="">
+                    </div>
+                  </div>
+                  <div class="col-sm-4 col-md-3 management-create-project-container-2">
+                    <!-- <div class="management-create-project-container-2"> -->
+                      <img class="create-project-img-3" src="/img/create-project-img-3.png" alt="">
+                      <a href="<?php echo e(url('/lazy')); ?>"><button class="management-create-project-button">CREATE PROJECT</button></a>                    <!-- </div> -->
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section class="management-project-container">
+              <div class="row">
+                <?php foreach($projects as $project): ?>
+                <div class="col-sm-6 col-md-6">
+                  <div class="management-project">
+                    <h3 class="management-project-title"><?php echo e($project->name); ?></h3>
+                    <p class="management-project-code">Project Code: <span><?php echo e($project->id); ?></span></p>
+                    <div class="management-project-text">
+                      <p><?php echo $project->description; ?></p>
+                      <a href=<?php echo e(url("/client/progress/".$project->id)); ?>>more</a>
+                    </div>
+
+                    <?php if($project->budget > 0): ?>
+                    <?php /* */$cos_rat = round($project->tasks()->sum('budget')/$project->budget,2)*100/* */ ?>
+                    <?php else: ?>
+                    <?php /* */$cos_rat = 0/* */ ?>
+                    <?php endif; ?>
+
+                    <p class="bar-title"><span class="name-title">Project Complete</span><span class="per-cent"><?php echo $cos_rat; ?>%</span></p>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                      aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $cos_rat; ?>%">
+                      </div>
+                    </div>
+
+                    <?php if($project->tasks()->count()> 0): ?>
+                    <?php /* */$pro_com = round($project->tasks()->where('status','>','0')->count()/$project->tasks()->count(),2)*100 /* */ ?>
+                    <?php else: ?>
+                    <?php /* */$pro_com = 0/* */ ?>
+                    <?php endif; ?>
+                    <p class="bar-title"><span class="name-title">Cost Spent</span><span class="per-cent"><?php echo e($pro_com); ?></span></p>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                      aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $pro_com; ?>%">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <?php endforeach; ?>
+              </div>
+            </section>
+            <a href="#" class="management-project-load-more">Load More <span>+</span></a>
+          </div>
+        </main>
+
+
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('script'); ?>
+        <script>
+            $(".management-project").click(function() {
+                  window.location = $(this).find("a").attr("href"); 
+                  return false;
+                });
+        </script>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('client.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

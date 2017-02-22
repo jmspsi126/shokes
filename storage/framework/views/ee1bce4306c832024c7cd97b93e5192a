@@ -29,7 +29,7 @@
 
 
 	<div class="container-fluid menu-hidden">
-			<?php echo $__env->make('company.sidebar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+			<?php echo $__env->make('company.sidebar',[$projectId], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 				<div id="content">
 					<?php echo $__env->make('company.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 

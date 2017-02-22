@@ -1,0 +1,223 @@
+<?php $__env->startSection('content'); ?>
+
+
+
+
+<link href="/css/progress/font-awesome.min.css" rel="stylesheet">
+<link href="/css/progress/lightbox.css" rel="stylesheet">
+<link href="/css/progress/main.css" rel="stylesheet">
+<link href="/css/progress/responsive.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+<script src="js/projectView/html5shiv.js"></script>
+<script src="js/projectViewrespond.min.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="img/ico/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/ico/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/ico/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="img/ico/apple-touch-icon-57-precomposed.png">
+
+
+<style>
+    body{
+        /*background-color:#f7f7f7;*/
+    }
+
+</style>
+
+
+
+<section>
+    <div class="vertical-center" style = "display:table;text-align: center;margin-top:15%">
+        <div class="container">
+            <div class="row">
+                <div class="action " >
+                    <div class="col-sm-12">
+                        <h1 class="title" style = "font-weight:300;"><?php echo e($project->name); ?></h1>
+                        <img style = "margin-top:2%" src=<?php echo e(asset("img/shape.png")); ?> alt="">
+                        <h2>Timeline</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/#page-breadcrumb-->
+
+<section id="blog" class="padding-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="timeline-blog overflow padding-top">
+
+                <div class="timeline-date text-center">
+                    <a href="#" class="btn btn-common uppercase"><?php echo e(date('F d, Y',strtotime($project->created_at))); ?></a>
+                </div>
+               
+                <?php foreach($project->tasks()->where('status','=',1)->get()->chunk(2) as $tasks): ?>
+                <div class="timeline-divider overflow padding-bottom">
+
+                    <div class="col-sm-6 padding-right arrow-right wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="300ms">
+                        <div class="single-blog timeline">
+                            <div class="single-blog-wrapper">
+                                <div class="post-thumb"></div>
+                            </div>
+                            <div class="post-content overflow">
+                                <span class="post-date pull-left"><?php echo e(date('F d, Y',strtotime($tasks[0]->created_at))); ?></span>
+                                <h2 class="post-title bold" style = "margin-top:10%;background-color:white"><a><?php echo e($tasks[0]->name); ?></a></h2>
+                                <h3 class="post-author"><a href="#"></a></h3>
+                                <p style = "font-family:Montserrat hairline"><?php echo e($tasks[0]->description); ?></p>
+                                <a href="<?php echo e(url("/".$tasks[0]->id."/wiki")); ?>">View Documentation</a>
+
+                                    <?php if($tasks[0]->submission->first()): ?>
+                                        <?php if($tasks[0]->submission->first()->validated == 2): ?>
+                                            <a href="<?php echo URL::route('expertise.task.download', $tasks[0]->id); ?>" class="read-more">Complete</a>
+<!--                                         <span class="uppercase"><a href="<?php echo URL::route('expertise.task.download', $tasks[0]->id); ?>" style = "color:red">DONE</a></span>
+ -->                                    <?php elseif($tasks[0]->submission->first()->validated == 1): ?> 
+                                            <a href="#" class="read-more">Validating</a>
+
+<!--                                         <span class="uppercase"><a href="#" style = "color:red">validating</a></span>
+ -->                                   <?php endif; ?>
+                                    <?php endif; ?>
+                                <div class="post-bottom overflow">
+                                    <span class="comments-number pull-right"><a href="#">$200</a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php if($tasks->get(1)): ?>
+                    <div class="col-sm-6 padding-left padding-top arrow-left wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="300ms">
+                        <div class="single-blog timeline">
+                            <div class="single-blog-wrapper">
+                                <div class="post-thumb">
+                                    <?php if($tasks->get(1)->submisssions): ?>
+
+                                    <img src="<?php echo $tasks->get(1)->submisssions->path; ?>}" class="img-responsive" alt="">
+                                    <div class="post-overlay">
+                                        <span class="uppercase"><a href="#">14 <br><small>Feb</small></a></span>
+                                    </div>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                            <div class="post-content overflow">
+                                <span class="post-date pull-left"><?php echo e(date('F d, Y',strtotime($tasks->get(1)['created_at']))); ?></span>
+                                <h2 class="post-title bold" style = "margin-top:10%"><a><?php echo e($tasks->get(1)['name']); ?></a></h2>
+                                <h3 class="post-author"><a href="#">Managed by micron News</a></h3>
+                                <p style = "font-family:Montserrat hairline"><?php echo e($tasks->get(1)['description']); ?></p>
+                                <a href="<?php echo e(url("/".$tasks->get(1)['id']."/wiki")); ?>">View Documentation</a>                                
+                                <div class="post-bottom overflow">
+                                    <span class="comments-number pull-right"><a href="#">$200</a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                </div>
+
+                <?php endforeach; ?>
+            </div>
+
+            <div class="timeline-blog overflow">
+                <div class="timeline-date text-center">
+                    <a href="" class="btn btn-common uppercase"><?php echo e(date('F d, Y',strtotime(Carbon\Carbon::now()))); ?></a>
+                </div>
+                <?php foreach($project->tasks()->where('status','=','0')->get()->chunk(2) as $tasks): ?>
+
+                <div class="timeline-divider overflow padding-bottom">
+                    <div class="col-sm-6 padding-right arrow-right wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="300ms">
+                        <div class="single-blog timeline" style = "padding:20px">
+                            <div class="single-blog-wrapper">
+                                <div class="post-thumb">
+                                    <div class="post-overlay">
+                                        <span class="uppercase"><a href="#">14 <br><small>Feb</small></a></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post- content overflow">
+                                <span class="post-date pull-left"><?php echo e(date('F d, Y',strtotime($tasks[0]->created_at))); ?></span>
+                                <h2 class="post-title bold" style = "margin-top:10%"><a><?php echo e($tasks[0]->name); ?></a></h2>
+                                <h3 class="post-author"><a href="#">Posted by Shan Wu</a></h3>
+                                <p style = "font-family:Montserrat hairline"><?php echo e($tasks[0]->description); ?></p>
+                                    <a href="<?php echo e(url("/".$tasks[0]->id."/wiki")); ?>">View Documentation</a>
+                                <div class="post-bottom overflow">
+                                    <span class="comments-number pull-right"><a href="#">$200</a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+               	   
+                    <div class="col-sm-6 padding-left padding-top arrow-left wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="300ms">
+                    <?php if($tasks->get(1)): ?>   
+		              <div class="single-blog timeline">
+                            <div class="single-blog-wrapper">
+                                <div class="post-thumb">
+                                    <div class="post-overlay">
+                                        <span class="uppercase"><a href="#">14 <br><small>Feb</small></a></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post-content overflow">
+                                <span class="post-date pull-left"><?php echo e(date('F d, Y',strtotime($tasks->get(1)['created_at']))); ?></span>
+                                <h2 class="post-title bold" style = "margin-top:10%"><a><?php echo e($tasks->get(1)['name']); ?></a></h2>
+                                <h3 class="post-author"><a href="#">Posted by micron News</a></h3>
+                                <p style = "font-family:Montserrat hairline"><?php echo e($tasks->get(1)['description']); ?></p>
+                                <a href="#" class="read-more"> <a href="<?php echo e(url("/".$tasks->get(1)['id']."/wiki")); ?>">View Documentation</a></a>
+                                <div class="post-bottom overflow">
+                                    <span class="comments-number pull-right"><a href="#">$200</a></span>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif; ?>    
+                    </div>
+                </div>
+	
+                            <?php endforeach; ?>
+
+                <div class="timeline-date text-center">
+                    <a href="#" class="btn btn-common">Complete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!--/#blog-->
+
+
+<!--/#footer-->
+
+
+<!-- <script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/lightbox.min.js"></script>
+<script type="text/javascript" src="js/wow.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script> -->
+
+
+<script>
+    $(function(){
+        var $ppc = $('.progress-pie-chart'),
+                percent = parseInt($ppc.data('percent')),
+                deg = 360*percent/100;
+        if (percent > 50) {
+            $ppc.addClass('gt-50');
+        }
+        $('.ppc-progress-fill').css('transform','rotate('+ deg +'deg)');
+        $('.ppc-percents span').html(percent+'%');
+    });
+</script>
+
+
+<!-- <script type="text/javascript" src="/js/projectView/jquery.js"></script>
+<script type="text/javascript" src="/js/projectView/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/projectView/lightbox.min.js"></script>
+<script type="text/javascript" src="/js/projectView/wow.min.js"></script>
+<script type="text/javascript" src="/js/projectView/main.js"></script> -->
+
+
+</div >
+
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('client.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

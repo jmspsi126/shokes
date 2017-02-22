@@ -1,0 +1,24 @@
+<a href="<?php echo e(url('/project/compile')); ?>">
+<div class = "work" style = "line-height: initial;">
+    <h5 style = "font-weight:600">From Mar.30 </h5>
+    <p>First project in shokse</p>
+    <p style = "font-weight:600">Shokes</p>
+</div>
+</a>
+
+<?php /*<a>*/ ?>
+<?php /*<div class = "work" style = "line-height: initial;">*/ ?>
+    <?php /*<h5 style = "font-weight:600">From Mar. 2015 to June 2015 </h5>*/ ?>
+    <?php /*<p>Create data analytics model for Sharp whiteboard analytic system</p>*/ ?>
+    <?php /*<p style = "font-weight:600">Sharp America Labtory-Santa Ana</p>*/ ?>
+<?php /*</div>*/ ?>
+<?php /*</a>*/ ?>
+
+
+<?php /*<a>*/ ?>
+    <?php /*<div class = "work" style = "line-height: initial;">*/ ?>
+        <?php /*<h5 style = "font-weight:600">From Mar. 2015 to June </h5>*/ ?>
+        <?php /*<p>Project Mangement overflow</p>*/ ?>
+        <?php /*<p style = "font-weight:600">Portal</p>*/ ?>
+    <?php /*</div>*/ ?>
+<?php /*</a>*/ ?>

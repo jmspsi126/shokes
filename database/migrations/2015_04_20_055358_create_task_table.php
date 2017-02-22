@@ -15,28 +15,40 @@ class CreateTaskTable extends Migration {
 		Schema::create('tasks', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->timestamps('start_time');
+	
+
             $table->string('name');
             $table->text('description');
+			$table->text('input');
+			$table->text('output');
+
+			$table->integer('budget');
             $table->integer('estimateTime');
 
             $table->integer("sequence");
-
-            $table->integer('project_id')->unsigned();
+			$table->rememberToken();
+			$table->boolean('completed')->default(false);
+			$table->boolean('status')->default(false);
+			$table->integer('project_id')->unsigned();
             $table->foreign('project_id')->references('id')->on('project');
 
-			$table->integer('company')->unsigned();
-			$table->foreign('company_id')->references('id')->on('company');
+   //          $table->timestamps('start_time');
+			$table->timestamps('end_time');
+
+
 		});
 
 
-		Schema::create('task_student', function(Blueprint $table)
+
+		Schema::create('student_task', function(Blueprint $table)
 		{
 			$table->integer('student_id')->unsigned()->index();
 			$table->foreign('student_id')->references('id')->on('student');
 
 			$table->integer('task_id')->unsigned()->index();
 			$table->foreign('task_id')->references('id')->on('tasks');
+
+			$table->boolean('working')->default(true);
 
 			$table->timestamps();
 
@@ -52,7 +64,7 @@ class CreateTaskTable extends Migration {
 	public function down()
 	{
 		Schema::dropIfExists('tasks');
-		Schema::drop('user_task');
+		Schema::drop('student_task');
 	}
 
 }

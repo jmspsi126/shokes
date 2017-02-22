@@ -33,7 +33,7 @@
                     <h3 style="font-family:'Raleway';font-weight:100">Sponsed by:</h3>
 
 
-                    <a href ="{{url('/project',$project->id)}}" ><button class="btn btn-default btn-lg">Start</button></a>
+                    <a href ="{!! URL::route('question',$project->id) !!}" style= "display:table-caption;border:solid 1px ;">START PROJECT</a>
                 </div>
             </div>
 

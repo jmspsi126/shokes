@@ -1,236 +1,181 @@
 <?php $__env->startSection('content'); ?>
 
-  <link href = "<?php echo e(asset('css/projectlist.css')); ?>" rel="stylesheet">
   <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.1-rc.1/css/select2.min.css" rel="stylesheet" />
   <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.1-rc.1/js/select2.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+
+  <style>
+    .form-control{
+      border:none;
+    }
+
+    h3{
+      font-weight:400;
+      color:gray;
+
+    }
+  </style>
 
 
-  <script>
-    console.log('here');
-    $(document).ready(function() {
-      $(".clickable").click(function(){
-        if($(".clickable").hasClass("active")){
-          $(".clickable").removeClass("active");
-        }
-        $(this).addClass("active")
-      });
-    });	</script>
-
-
-
-
-  <div class="container-fluid">
+  <div class="container-fluid" style="
+    margin-top: 5%;
+">
     <div id="content">
 
-      <div class = "col-md-12" style = "height:250px">
-        <div class="col-md-4 col-md-offset-4 center" style = "text-align: center" >
-          <h3 class = "title">REGISTER AN ACCOUNT</h3>
+      <?php if(count($errors) > 0): ?>
+        <div class="alert alert-danger" style = "background-color:transparent">
+          <ul>
+            <?php foreach($errors->all() as $error): ?>
+              <li><?php echo e($error); ?></li>
+            <?php endforeach; ?>
+          </ul>
+        </div>
+      <?php endif; ?>
+      <div class = "col-md-12 form-container " style="text-align: center;">
+        <div class="col-md-10 col-md-offset-1" style="font-weight: lighter;letter-spacing: 5px;">
+          <h3 style="font-weight: lighter;letter-spacing: 5px;text-transform: uppercase">Post Project</h3>
+          <img style = "margin-top:2%" src=<?php echo e(asset("/img/shape.png")); ?> alt="">
+        </div>
+        <div style = "margin-top:2%" class="col-md-6 col-md-offset-3">
+
+        <p style = "font-family:'Montserrat hairline', sans-serif">Lorem Ipsum is simply dummy text of the printing and typesetting industry.it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting</p>
         </div>
       </div>
 
-      <form class="form-horizontal" action="<?php echo URL::route('project.store'); ?>" role="form" method="post">
-        <input type="hidden" name="_token" id="_token" value="<?php echo e(csrf_token()); ?>">
-
-        <div class = "col-md-12">
-          <div class = "col-md-1 col-md-offset-1">
-            <h2 class = "numberCircle">1</h2>
-          </div>
-
-          <div class = "col-md-4" style = "margin-top:5px">
-            <h3 class = "title">What is your personal information?</h3>
-          </div>
-        </div>
-
-
-        <div class="form-group">
-          <div class="col-md-7">
-            <input type="text" class="form-control input_" name="name" placeholder="Youremail@host.com" style = "box-shadow: none">
-          </div>
-        </div>
-
-        <div class = "col-md-12">
-          <div class = "col-md-1 col-md-offset-1">
-            <h2 class = "numberCircle">2</h2>
-          </div>
-
-          <div class = "col-md-4" style = "margin-top:5px">
-            <h3 class = "title">Please input your password</h3>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <div class="col-md-7">
-            <input type="password" class="form-control input_" name="name" placeholder="password" style = "box-shadow: none">
-            <input type="password" class="form-control input_" name="name" placeholder="confirm your password" style = "box-shadow: none">
-
-          </div>
-        </div>
-       </form>
-
-
-
-
-
-
-      <div class = "col-md-12" style = "height:300px;">
-        <div class="col-md-4 col-md-offset-4 center" style = "text-align: center;">
-          <h3 class = "title">SELECT YOUR PROJECT CATEGORY</h3>
-        </div>
-      </div>
-
-      <div class="widget-body">
-        <div class="innerLR">
-          <form class="form-horizontal" action="<?php echo URL::route('project.store'); ?>" role="form" method="post">
+    <div class = "col-md-8 col-md-offset-2" style = "margin-top:3%;padding: 3%;background: #f1f1f1;">
+          <form class="form-horizontal" action="<?php echo e(URL('/client/store')); ?>" role="form" method="post">
             <input type="hidden" name="_token" id="_token" value="<?php echo e(csrf_token()); ?>">
 
-            <div class = "col-md-2"></div>
+            <div class = "col-md-5 col-md-offset-1">
 
-            <div class="col-md-2 space clickable" style ="margin-top:0">
-              <img src = "<?php echo e(asset('img/seo-monitoring.png')); ?>" style = "height:8em">
-              <p>Machine Learning</p>
-            </div>
-
-            <div class="col-md-2 col-md-offset-1 space clickable" style ="margin-top:0">
-              <img src = "<?php echo e(asset('img/web-development.png')); ?>" style = "height:8em">
-              <p>Andriod Development</p>
-            </div>
-
-            <div class="col-md-2 col-md-offset-1 space clickable" style ="margin-top:0"s>
-              <img src = "<?php echo e(asset('img/landing-page.png')); ?>" style = "height:8em">
-              <p>Web Development</p>
-            </div>
-
-            <div class = "col-md-12">
-              <div class = "col-md-1 col-md-offset-1">
-                <h2 class = "numberCircle">1</h2>
+              <div class="form-group">
+                <div class="col-md-12">
+                    <input type="text" class="form-control input_" name="name" placeholder="PROJECT NAME" style = "box-shadow: none">
+                </div>
               </div>
 
-              <div class = "col-md-4" style = "margin-top:5px">
-                <h3 class = "title">What is about your project about?</h3>
-                <p style = "font-weight:700;color:grey"> Project name:</p>
-              </div>
-            </div>
 
-
-            <div class="form-group">
-              <div class="col-md-7 col-md-offset-2" style = "margin-left:18%;">
-                <input type="text" class="form-control input_" name="name" placeholder="What you want us to do" style = "box-shadow: none">
-              </div>
-            </div>
-
-            <div class = "col-md-12">
-              <div class = "col-md-1 col-md-offset-1">
-                <h2 class = "numberCircle">2</h2>
+              <div class="form-group">
+                <div class="col-md-12">
+                    <input class = "input_ form-control" type="text"  placeholder="TYPE OF WORK" name="Start Time">
+                </div>
               </div>
 
-              <div class = "col-md-4" style = "margin-top:5px">
-                <h3 class = "title">Tells us more about your project?</h3>
-                <p style = "font-weight:700;color:grey"> Skills needed:</p>
-              </div>
-            </div>
-
-
-            <div class="form-group">
-              <div class="col-md-8 col-md-offset-2">
-
-                <div class="col-sm-10">
-                  <select class="input_" type="text" multiple = "multiple" id = "skill_list" class="form-control" name="skill" placeholder="select the skills">
-                    <option disabled = "disabled" value = "FrontEnd">Frontend development</option>
-                    <option value = "javascript">javascript</option>
-                    <option value = "Node.js">Node.js</option>
-                    <option value = "Python">Python</option>
-                    <option value = "Css">Css</option>
-                    <option disabled = "disabled" value = "FrontEnd">Frontend development</option>
-                    <option value = "Mysql">Mysql</option>
-                    <option value = "GoogleAnalytics">Analytics</option>
-                    <option value = "MongoDB">MongoDB</option>
-                  </select>
+                <div class="form-group">
+                  <div class="col-md-12">
+                      <input class = "input_ form-control" type="int" name="budget" placeholder="BUDGET ($)">
+                    </div>
                 </div>
 
-
-                <div class="col-sm-10" style = "margin-top:5%">
-                  <p style = "font-weight:700;color:grey">Please give us more information about your project</p>
-                  <textarea  class = "input_" name="description" cols="95" rows="5" placeholder="Description"></textarea>
+              <div class="form-group">
+                <div class="col-md-10 col-md-offset-1">
+                  <h4 style = "margin-bottom:0px">Completed in</h4>
                 </div>
-
-              </div>
-            </div>
-
-
-            <div class = "col-md-12">
-              <div class = "col-md-1 col-md-offset-1">
-                <h2 class = "numberCircle">3</h2>
-              </div>
-
-              <div class = "col-md-4" style = "margin-top:5px">
-                <h3 class = "title">Tells us about your project open period?</h3>
               </div>
 
               <div class="form-group">
-                <div class = "col-md-10 col-md-offset-2" style = "margin-top:1%;margin-left:18%">
-                  <p style = "font-weight:700;color:grey">Start Time</p>
-                </div>
-                <div class="col-md-3 col-md-offset-2" style = "margin-left:18%">
-                  <input class = "input_" type="date" class="form-control" name="Start Time" placeholder="Estimate Time" style = "color:grey">
+                <div class="col-md-12">
+                    <input class="input_ form-control" type="date" name="Endtime" placeholder="DD-MM-YYYY">
+                  </div>
+              </div>
 
+          </div>
+
+          <div  class="col-md-6">
+              <textarea  class = " form-control" name="description" placeholder="DESCRIPTION" cols="95" rows="13"></textarea>
+          </div>
+
+          <div class="col-md-12" style = "margin-top:3%">
+                <div class="col-md-4 col-md-offset-1 extraspace" >
+                  <h4>Talent Reuired(Select all that apply)</h4>
+                  <div class = "row" style = "width:80%">
+                  <div class = "col-md-4" style = "margin-top:20px">
+                  <img id = "code-java" class = "skill" src = "<?php echo e(asset('img/code-java.png')); ?>" style = "height:3em;margin-left:3%;opacity:0.5;transition-duration:1s">
+                  </div>
+
+                  <div class = "col-md-4" style = "margin-top:20px">
+
+                      <img id = "code-html" class = "skill" src = "<?php echo e(asset('img/code-html.png')); ?>" style = "height:3em;margin-left:13%;opacity:0.5;transition-duration:1s">
+                  </div>
+                      <div class = "col-md-4" style = "margin-top:20px">
+
+                      <img id = "code-php"  class = "skill" src = "<?php echo e(asset('img/code-php.png')); ?>" style = "height:3em;margin-left:13%;opacity:0.5;transition-duration:1s">
+                      </div>
+                      <div class = "col-md-4" style = "margin-top:20px">
+
+                      <img id = "code-css" class = "skill" src = "<?php echo e(asset('img/code-css.png')); ?>" style = "height:3em;margin-left:13%;opacity:0.5;transition-duration:1s">
+                       </div>
+                      <div class = "col-md-4" style = "margin-top:20px">
+
+                      <img id = "sql-web" class = "skill" src = "<?php echo e(asset('img/sql-web.png')); ?>" style = "height:3em;margin-left:13%;opacity:0.5;transition-duration:1s">
+                       </div>
+                          <div class = "col-md-4" style = "margin-top:20px">
+
+                          <img id = "asp-code" class = "skill" src = "<?php echo e(asset('img/asp-code.png')); ?>" style = "height:3em;margin-left:13%;opacity:0.5;transition-duration:1s">
+                          </div>
+                 </div>
                 </div>
 
-                <div class = "col-md-10 col-md-offset-2" style = "margin-top:2%;margin-left:18%">
-                  <p style = "font-weight:700;color:grey">Ending Time</p>
-                </div>
-                <div class="col-md-3 col-md-offset-2" style = "margin-left:18%">
-                  <input class="input_" type="date" class="form-control" name="Ending time" placeholder="Estimate Time" style ="color:grey">
-                </div>
+          <div class="col-md-5 col-md-offset-1">
+              <div class = "skillpool" class="col-md-2">
+                  <h4>Selected talents</h4>
+              </div>
+          </div>
+
+          </div>
+
+              <div class="form-group">
+            <div class ="col-md-12" style = "margin-top:3%; text-align: center;">
+                <div class ="col-md-12" style = "margin-top:3%; text-align: center;">
+              <button type="submit" class="btn btn-primary-outline" style = "width:30%;height: 40px;font-weight: bold;color: white;background: #f73b56;">POST NOW</button>
+               </div>
+                <div class ="col-md-12" style = "margin-top:3%; text-align: center;">
+              <a href="<?php echo URL::route('task'); ?>" class="btn btn-primary-outline" style = "color:1px solid #e5e5e5;color:#f73b56">Cancel</a>
               </div>
             </div>
-
-
-
-
-
-            <div class = "col-md-12" style = "height:200px">
-              <div class = "col-md-1 col-md-offset-1">
-                <h2 class = "numberCircle">4</h2>
-              </div>
-
-              <div class = "col-md-4" style = "margin-top:5px">
-                <h3 class = "title">Upload your code</h3>
-                <p style = "font-weight:700;color:grey"> Upload Current Code</p>
-              </div>
-
-              <div class = "col-md-6" style = "height:150px"></div>
-
-              <div class = "col-md-2 col-md-offset-2 upload">
-                <h4 class = "title"><a>+ Upload File</a></h4>
-              </div>
-
-            </div>
-
-
-            <div class="form-group">
-              <div class ="col-md-12" style = "margin-top:3%;height:200px">
-                <div class="col-sm-6 col-sm-offset-2">
-                  <button type="submit" class="btn btn-lg btn-info">Post Your Project Now</button>
-                  <a href="<?php echo URL::route('task'); ?>" class="btn btn-lg btn-info pull-right margin-bottom-xs">Cancel</a>
-                </div>
-              </div>
-            </div>
-
-            <script>
-              $('#skill_list').select2({
-                placeholder:'Choose the talents',
-                tags:true
-              });
-            </script>
-
+          </div>
 
           </form>
         </div>
       </div>
     </div>
-  </div>
+<?php $__env->stopSection(); ?>
 
 
+<?php $__env->startSection("script"); ?>
+
+  <script>
+    <?php /*$('#skill_list').select2({*/ ?>
+      <?php /*placeholder:'Select skills',*/ ?>
+      <?php /*tags:true,*/ ?>
+    <?php /*});*/ ?>
+
+    $(".skill").click(function(){
+      $(this).hide();
+      var id = "<?php echo e(url(asset('img'))); ?>"+"/"+$(this).attr('id')+".png";
+      var img = " <img value = "+$(this).attr('id')+" class = 'select skill' src ='"+id+"' style = 'height:3em;margin-left:1%;margin-top:1%;opacity:0.5;transition-duration:1s'>"
+      $('.skillpool').append(img);
+      $('form').append("<input type='hidden' name='skills' value='"+$(this).attr('id')+"'>");
+
+    })
+
+    $(document).on('click','.select',function(e){
+      $(this).addClass('hide');
+      var id = $(this).attr('value');
+      console.log($(this).attr('value'));
+      $("#"+id).show();
+      $("input[type='hidden'][value = '"+id+"']").remove()
+
+    })
+
+    $(".skill").hover(function(){
+      $(this).css('opacity','1')},
+      function(){
+        $(this).css('opacity','0.5')
+      }
+    )
+
+  </script>
 <?php $__env->stopSection(); ?>
 
 
@@ -239,4 +184,4 @@
 
 
 
-<?php echo $__env->make('app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('client.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

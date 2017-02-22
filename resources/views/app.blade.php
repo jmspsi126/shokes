@@ -37,15 +37,13 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="{{url('/')}}">Shokse</a>
+					<a class="navbar-brand" href="#">Shokse</a>
 				</div>
 
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li><a href="{{ url('/') }}">Home</a></li>
-						<li><a href="{{ url('/profile') }}">Work</a></li>
-						<li><a href="{{ url('/resume') }}">Resume</a></li>
-
+						<li><a href="{{ url('/profile') }}">Dashboard</a></li>
+						<li><a href="{{ url('/project') }}">Find Project</a></li>
 					</ul>
 
 					<ul class="nav navbar-nav navbar-right">
@@ -54,7 +52,7 @@
 						<li><a href="{{ url('/auth/register') }}">Register</a></li>
 						@else
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">{{ Auth::user()->name }} <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="{{ url('/auth/logout') }}">Logout</a></li>
 							</ul>
@@ -65,7 +63,15 @@
 			</div>
 		</nav>
 
-		
+		@if(Session::has('flash_message'))
+			<div class="alert alert-warning fade in">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+				<p>{{Session::get('flash_message')}}!</p>
+				<a href = "{{url('/profile')}}"><p>Your dashboard is activated!<p></a>
+			</div>
+		@endif
+
+
 		@yield('content')
 
 		<!-- Scripts -->

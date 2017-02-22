@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Shokse client project</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" type="image/png" href='<?php echo e(asset("images/favicon-icon.png")); ?>' sizes="16x16">
+	<!--Bootstrap-->
+    <link href='<?php echo e(asset("css/bootstrap.min.css")); ?>' rel="stylesheet">
+    <!--font-awesome CSS-->
+    <link href='<?php echo e(asset("css/font-awesome.min.css")); ?>' rel="stylesheet">    
+    <!--Custom Template CSS-->
+    <link href='<?php echo e(asset("css/main.css")); ?>' rel="stylesheet" type="text/css">
+    <!--Media Query CSS-->
+    <link href='<?php echo e(asset("css/media-query-all.css")); ?>' rel="stylesheet" type="text/css"> 
+    <!--slick CSS-->
+    <link rel="stylesheet" type="text/css" href='<?php echo e(asset("css/slick-theme.css")); ?>'/>    
+    <link rel="stylesheet" type="text/css" href='<?php echo e(asset("css/slick.css")); ?>'/>
+  </head>
+  <body>
+    <header class="shokse-header block">
+    	<nav class="navbar container">
+          <figure class="row">
+            <figcaption class="navbar-header pull-left">
+              <a class="navbar-brand" href="#"><img src='<?php echo e(asset("images/shokse-logo.png")); ?>' alt="logo"/></a>
+              <button type="button" class="navbar-toggle mobile-nav" data-toggle="collapse" data-target="#mobileMenuCollapsing">
+                 <i class="fa fa-bars" aria-hidden="true"></i>
+              </button>
+            </figcaption>
+            <!-- /.navbar-header --> 
+            <!--<figcaption class="nav-menu-right pull-right">
+                <figcaption id="mobileMenuCollapsing" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav main-menu">
+                    	<li><button type="button" class="btn">Get Started</button></li>
+                        <li class="get-started"><a href="#" class="search"></a></li>
+                    </ul>
+                </figcaption>
+            	<!-- /.collapse.navbar-collapse -->
+                 
+            <!--</figcaption>-->
+            <figcaption class="search_cover navbar-collapse">
+            	<button type="button" class="btn">Filters</button></li>
+                <a href="#" class="search marg1"></a>
+            </figcaption>
+            <!-- /.nav-right --> 
+                      
+          </figure>
+          <!-- /row -->          
+		</nav>
+        <!-- /.container -->
+    </header>
+<<<<<<< HEAD
+=======
+    <style type="text/css">
+      
+      .loader {
+          border: 16px solid #f3f3f3; /* Light grey */
+          border-top: 16px solid #6BC5D3; /* Blue */
+          border-radius: 50%;
+          width: 120px;
+          height: 120px;
+          animation: spin 2s linear infinite;
+         position: relative;
+         top: 50%;
+         margin: 13% auto 13% auto;
+
+      }
+
+      @keyframes  spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+      }
+    </style>
+>>>>>>> securemetasys
+    <!-- /.shokse-header -->
+  	<main class="block task_text freelancer">
+        <section class="block">
+        	<article class="container">
+            	<figure>
+                    <h1 class="text-center">Find a project</h1>
+                    <h6 class="text-center">WEB DEVELOPMENT <span><?php echo e($tasks->count()); ?></span><a href="#" class="drop"></a></h6>
+                    <div class="clearfix"></div>
+                </figure>
+<<<<<<< HEAD
+				<?php if($tasks->count()>0): ?>
+                <div class="page_rotate_cover">
+                    <div class="container_rotate">
+						<?php /* */$count = $tasks->count()/* */ ?>
+						<?php foreach($tasks as $task): ?>
+						
+						<div data-card="<?php /* */$count-- /* */ ?>" class="card">
+							<div class="detail_cover">
+							<div class="upper_part">
+								<div class="l_upper_part">
+									<a href="#" class="active_btn">ACTIVE</a>
+									<div class="clearfix"></div>
+									<label><?php echo e($task->name); ?></label>
+									<div class="clearfix"></div>
+									<p><?php echo e($task->description); ?></p>
+									<div class="clearfix"></div>
+								</div>
+								<div class="r_upper_part">
+									<div class="small_box">
+										<div class="img_cover">
+											<img src="/images/budget_round.png" alt="image"/>
+										</div>
+										<div class="text_cover1">
+											<small>BUDGET</small>
+											<div class="clearfix"></div>
+											<div class="price">$<?php echo e($task->budget); ?></div>
+										</div>
+									</div>
+									<div class="small_box">
+										<div class="img_cover">
+											<img src="/images/hourse.png" alt="image"/>
+										</div>
+										<div class="text_cover1">
+											<small>HOURS</small>
+											<div class="clearfix"></div>
+											<div class="price"><?php echo e($task->estimateTime); ?> hours</div>
+										</div>
+									</div>
+									<div class="small_box">
+										<div class="img_cover">
+											<img src="/images/views.png" alt="image"/>
+										</div>
+										<div class="text_cover1">
+											<small>VIEWS</small>
+											<div class="clearfix"></div>
+											<div class="price">245</div>
+										</div>
+									</div>
+								</div>
+								<div class="clearfix"></div>
+							</div>  
+							<div class="lower_part"> 
+								<div class="upper_box1">	 
+									<label class="skils">SKILLS</label>
+									<div class="tags_cover">
+										<?php foreach($task->skill as $skill): ?>
+											<span><?php echo e($skill->name); ?></span>
+										 <?php endforeach; ?>
+									
+									</div>
+								</div>
+								<div class="upper_box2">	 
+									<label class="input_pic">INPUT</label>
+									<p><?php echo e($task->input); ?>
+
+									</p>
+								</div>
+								<div class="upper_box3">	 
+									<label class="output_pic">OUTPUT</label>
+									<p><?php echo e($task->output); ?></p>
+								</div>
+							</div>                    
+							<div class="bottom_buttons">
+								<a href="#" class="save">APPLY</a>
+								<a href="#" class="cancel">SKIP</a>
+							</div>
+						</div>	
+                     </div>
+                     
+					 <?php endforeach; ?>
+					 
+				</div>
+				</div>
+				<?php else: ?>
+				<h2 class="text-center not-available">New Task is not Available</h2>
+				
+				<?php endif; ?>
+=======
+                <div class="loader"></div>
+                <div id="project_data">
+
+                </div>
+                 
+				
+>>>>>>> securemetasys
+			</article> 
+			<!-- /.container -->         
+		</section>
+    	<!-- /.duis-quis --> 
+    </main>	
+  	<!-- /main -->
+    <footer class="block shokse-footer">
+    	<article class="container">
+        	<figure class="shokse-footer-top col-md-16 col-sm-16 col-xs-16">
+            	<figcaption class="col-md-8 col-sm-8 col-xs-16 footer-left">
+                	<a href="#" class="footer-logo"><img src='<?php echo e(asset("images/shokse-footer-logo.png")); ?>' alt="footer-img" /></a>
+                    <p class="primary-color shokse-matche">Shokse matches the perfect candidate to your projects in need. No matter how complicated, the Shokse management system gets your project done faster and bettter.</p>
+                </figcaption>
+  				<!-- /figcaption col -->
+                
+                <figcaption class="col-md-8 col-sm-8 col-xs-16 footer-right">
+                	<ul>
+                    	<li>
+                        	<h6>About us</h6>
+                            <a href="#">Who We Are</a>
+                        </li>
+                        <li>
+                        	<h6>Quick Links</h6>
+                            <a href="#">Register</a>
+                        </li>
+                        <li>
+                        	<h6>Supports</h6>
+                            <a href="#">Contact Us</a>
+                        </li>
+                    </ul>
+                    
+                </figcaption>
+  				<!-- /figcaption col -->
+                
+            </figure>
+  			<!-- /.footer-top -->    
+            
+            <figure class="shokse-footer-bottom col-md-16 col-sm-16 col-xs-16">
+                <figcaption class="col-md-8 col-sm-8 col-xs-16 social-link">
+                	<a href="#"><img src='<?php echo e(asset("images/fb-icon.png")); ?>' alt="icon" /></a>
+                    <a href="#"><img src='<?php echo e(asset("images/twiter-icon.png")); ?>' alt="icon" /></a>
+                    <a href="#"><img src='<?php echo e(asset("images/link-in-icon.png")); ?>' alt="icon" /></a>
+                </figcaption>
+  				<!-- /figcaption col -->
+                
+                <figcaption class="col-md-8 col-sm-8 col-xs-16 copyWrite">
+                	<a href="#">© 2016 Shokse Ltd </a>
+                    <a href="#">Terms and Conditions</a>
+                    <a href="#">Privacy Policy</a>
+                </figcaption>
+  				<!-- /figcaption col -->
+                
+            </figure>
+  			<!-- /.footer-bottom --> 
+        
+        </article>
+  		<!-- /article -->        
+    </footer>
+  	<!-- /footer.shokse-footer -->
+    <!--<script type="text/javascript" src="assets/js/jquery.js"></script>-->
+    <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script> 
+    <script type="text/javascript" src='<?php echo e(asset("js/bootstrap.min.js")); ?>'></script>
+    <script type="text/javascript" src='<?php echo e(asset("js/iscroll.js")); ?>'></script>
+    <script type="text/javascript" src='<?php echo e(asset("js/main.js")); ?>'></script>
+    <script type="text/javascript" src='<?php echo e(asset("js/slick.min.js")); ?>'></script> 
+<<<<<<< HEAD
+    <script type="text/javascript">
+	function OpenHoverstate(id) {	
+ 
+		 jQuery("#open_"+id).hide();
+		  jQuery("#open_"+id).animate({"left":"810px"}, "slow");
+		    jQuery("#close_"+id).show();
+			 jQuery("#close_"+id).animate({"left":"0px"}, "slow");
+	}
+	function CloseHoverstate(id) {	
+   jQuery("#close_"+id).hide();
+   jQuery("#close_"+id).animate({"left":"810px"}, "slow");
+		 jQuery("#open_"+id).show();
+		   jQuery("#open_"+id).animate({"left":"0px"}, "slow");
+	}
+	</script> 
+<script type="text/javascript">
+	jQuery( "#opent1a .dot_icon" ).click(function() {});
+	jQuery( "#open1a .close_icon" ).click(function() {});
+
+	jQuery('.dot_icon').click(function(){
+		//alert(jQuery(this).parent().attr('class'));
+		jQuery('.mid_other1').fadeOut( "slow");
+	  	jQuery(this).parent().next().fadeIn( "slow", function() {
+		// Animation complete.
+	  	});
+	  });
+	  jQuery('.close_icon').click(function(){
+		jQuery(this).parent().fadeOut( "slow", function() {
+		// Animation complete.
+	  });
+		});
+		  jQuery(document).on('click','.close_btn',function(){
+		  jQuery(this).parent().fadeOut("slow",function(){});
+		});
+  </script> 
+  <script>
+(function($) {
+	$=jQuery;
+  var rotate, timeline;
+
+  rotate = function() {
+    return $('.card:first-child').fadeOut(400, 'swing', function() {
+      return $('.card:first-child').appendTo('.container_rotate').hide();
+    }).fadeIn(400, 'swing');
+  };
+
+  timeline = setInterval(rotate, 1200);
+
+  $('body').hover(function() {
+    return clearInterval(timeline);
+  });
+
+  $('.card').click(function() {
+	  //alert("fhdjfhjdhf");
+    return rotate();
+  });
+
+}).call(this);
+</script>
+=======
+    <script src="https://cdn.jsdelivr.net/jquery/1.12.4/jquery.min.js"></script>
+   
+<script type="text/javascript">
+  
+  $( document ).ready(function() {
+    get_projects();
+});
+  // to get page data from ajax
+  function get_projects()
+  { 
+    $.ajax({
+      url: 'project/get_projects',
+      type:'GET',
+   
+      async: false,
+      success: function(response)
+      {  
+        $('.loader').hide();
+        $("#project_data").html(response);
+      }
+    });
+  }
+
+
+
+</script>
+
+
+>>>>>>> securemetasys
+
+  </body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <link rel="stylesheet" type="text/css" href="<?php echo e(asset('/css/landing/font-awesome.min.css')); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo e(asset('/css/landing/style.css')); ?>">
+      <link rel="stylesheet" href="<?php echo e(asset('/css/landing/owl.carousel.css')); ?>">
+      <link rel="stylesheet" href="<?php echo e(asset('/css/landing/owl.theme.default.min.css')); ?>">
+    </head>
+
+<?php
+    $notif = \Notice::text()->all();
+    $uid = Auth()->user()->id;
+    $count = count(\Notice::text()->unread());
+?>
+
+    <body class="management-page">
+      <div class="container-fluid">
+        <header class="header-management">
+          <div class="container-fluid">
+            <div class="col-xs-12 col-sm-4">
+               <div class="header-right">
+                <div class="header-right-img hidden-xs">
+                  <img class="management-header-img" src="/img/management-header-img.png" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+          <nav class="navbar navbar-default">
+            <div class="container-fluid">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="col-xs-12 col-sm-4 header-right">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-management-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="#"><img src="/img/logo.png" alt="Logo"></a>
+                </div>
+              </div>
+
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="col-xs-12 col-sm-8">
+                 <div class="collapse navbar-collapse" id="bs-management-navbar-collapse-1">
+                 <div class="col-xs-12 col-sm-6 menu-list-container menu-right-list">
+                    <ul class="nav navbar-nav">
+                      <li><a href="<?php echo e(url('/client/manage')); ?>">MANAGEMENT</a></li>
+                      <li class="management-message"><span id="bell" class="count-message-wrapper"><span class="count-message"><?php echo e($count); ?></span><i class="fa fa-bell-o" aria-hidden="true"></i></span>
+                        <ul class="new-message" style="display:none">
+                        <?php foreach($notif as $item): ?>
+                                    <?php if ($item->status === 0) $back = '#eee'; else $back = '#fff'?>
+                          <li class="new-message-item" style="background-color: <?php echo e($back); ?>">
+                            <div class="col-xs-2 pensil"><img src="/img/pen-2.png" alt=""></div>
+                            <div class="col-xs-10 new-message-item-content">
+                              <p><span><?php echo e($item->sender->name); ?></span><?php echo html_entity_decode($item->message); ?><p>
+                              <p><span><?php echo e($item->created_at); ?>
+
+                            </div>
+                            <i class="fa new-message-close fa-times" aria-hidden="true"></i>
+                          </li>
+                             <?php endforeach; ?>
+                        </ul>
+                      </li>
+                      <li><a href="/auth/logout"><img src="/img/logout-icon.png" alt="logout-icon"> LOGOUT</a></li>
+                    </ul>
+                 </div>
+                </div><!-- /.navbar-collapse -->
+              </div>
+            </div><!-- /.container-fluid -->
+          </nav>
+        </header><!-- header -->
+    
+
+
+    <?php echo $__env->yieldContent('content'); ?>
+
+
+
+            <!-- Scripts -->
+<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script> -->
+
+
+<script>
+    $("li").click(function(){
+        $("li").removeClass("active")
+        $(this).addClass('active');
+    });
+</script>
+
+
+        <script src="/js/landing/jquery-1.12.2.min.js"></script>
+      <script src="/js/landing/bootstrap.min.js"></script>
+      <script src='/js/landing/owl.carousel.min.js'></script>
+      <script src='/js/landing/select2.min.js'></script>
+      <script src='/js/landing/jquery.scrollTo-1.4.3.1.js'></script>
+        <script src="/js/landing/script.js"></script>
+
+<?php echo $__env->yieldContent('script'); ?>
+
+</body>
+</html>

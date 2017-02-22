@@ -23,35 +23,39 @@ class CreateUsersTable extends Migration
             $table->string('password', 60);
             $table->rememberToken();
             $table->timestamps();
+            $table->integer('isActive')->default(0);
             $table->boolean('isStudent')->default(false);
             $table->boolean('isCompany')->default(false);
             $table->boolean('isExpertise')->default(false);
+            $table->string('confirmation_code');
 
 
         });
 
 
         Schema::create('student', function (Blueprint $table) {
+            $table->timestamps();
+            $table->increments('id');
 
-            $table->integer('id')->unsigned();
-            $table->foreign('id')->references('id')->on('users')->ondelete('cascade');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->ondelete('cascade');
 
         });
 
          Schema::create('company', function (Blueprint $table) {
-             $table->integer('id')->unsigned();
-             $table->foreign('id')->references('id')->on('users')->ondelete('cascade');
-             
-             $table->string('name');
-             $table->string('email')->unique();
-             $table->string('password', 60);
-             $table->rememberToken();
              $table->timestamps();
+             $table->increments('id');
+
+             $table->integer('user_id')->unsigned();
+             $table->foreign('user_id')->references('id')->on('users')->ondelete('cascade');
         });
 
         Schema::create('expertise', function (Blueprint $table) {
-            $table->integer('id')->unsigned();
-            $table->foreign('id')->references('id')->on('users')->ondelete('cascade');
+            $table->timestamps();
+            $table->increments('id');
+
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->ondelete('cascade');
         });
 
 

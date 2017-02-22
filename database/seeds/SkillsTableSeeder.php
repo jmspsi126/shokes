@@ -19,7 +19,9 @@ class SkillsTableSeeder extends Seeder
         	  array('name' => 'C'),
         	  array('name' => 'Javascript'),
         	  array('name' => 'Python'),
-        	  array('name' => 'Ruby')
+        	  array('name' => 'Ruby'),
+			array('name' => 'PHP')
+
         	]
 		);
     }

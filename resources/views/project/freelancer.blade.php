@@ -1,0 +1,206 @@
+<link href='{{asset("css/bootstrap.min.css")}}' rel="stylesheet">
+    <!--font-awesome CSS-->
+    <link href='{{asset("css/font-awesome.min.css")}}' rel="stylesheet">    
+    <!--Custom Template CSS-->
+    <link href='{{asset("css/main.css")}}' rel="stylesheet" type="text/css">
+    <!--Media Query CSS-->
+    <link href='{{asset("css/media-query-all.css")}}' rel="stylesheet" type="text/css"> 
+    <!--slick CSS-->
+    <link rel="stylesheet" type="text/css" href='{{asset("css/slick-theme.css")}}'/>    
+    <link rel="stylesheet" type="text/css" href='{{asset("css/slick.css")}}'/>
+
+
+@if($tasks->count()>0)
+                <div class="page_rotate_cover">
+                    <div class="container_rotate">
+						{{-- */$count = $tasks->count()/* --}}
+						@foreach($tasks as $task)
+						
+						<div data-card="{{-- */$count-- /* --}}" class="card">
+							<div class="detail_cover">
+							<div class="upper_part">
+								<div class="l_upper_part">
+									<a href="#" class="active_btn">ACTIVE</a>
+									<div class="clearfix"></div>
+									<label>{{$task->name}}</label>
+									<div class="clearfix"></div>
+									<p>{{$task->description}}</p>
+									<div class="clearfix"></div>
+								</div>
+								<div class="r_upper_part">
+									<div class="small_box">
+										<div class="img_cover">
+											<img src="/images/budget_round.png" alt="image"/>
+										</div>
+										<div class="text_cover1">
+											<small>BUDGET</small>
+											<div class="clearfix"></div>
+											<div class="price">${{$task->budget}}</div>
+										</div>
+									</div>
+									<div class="small_box">
+										<div class="img_cover">
+											<img src="/images/hourse.png" alt="image"/>
+										</div>
+										<div class="text_cover1">
+											<small>HOURS</small>
+											<div class="clearfix"></div>
+											<div class="price">{{$task->estimateTime}} hours</div>
+										</div>
+									</div>
+									<div class="small_box">
+										<div class="img_cover">
+											<img src="/images/views.png" alt="image"/>
+										</div>
+										<div class="text_cover1">
+											<small>VIEWS</small>
+											<div class="clearfix"></div>
+											<div class="price">245</div>
+										</div>
+									</div>
+								</div>
+								<div class="clearfix"></div>
+							</div>  
+							<div class="lower_part"> 
+								<div class="upper_box1">	 
+									<label class="skils">SKILLS</label>
+									<div class="tags_cover">
+										@foreach($task->skill as $skill)
+											<span>{{$skill->name}}</span>
+										 @endforeach
+									
+									</div>
+								</div>
+								<div class="upper_box2">	 
+									<label class="input_pic">INPUT</label>
+									<p>{{$task->input}}
+									</p>
+								</div>
+								<div class="upper_box3">	 
+									<label class="output_pic">OUTPUT</label>
+									<p>{{$task->output}}</p>
+								</div>
+							</div>                    
+							<div class="bottom_buttons">
+								 
+								
+									<a id = {{$task->id}} href="#" class="save apply_project" >APPLY</a>
+								
+								<a href="#" class="cancel skip_project" >SKIP</a>
+							</div>
+						</div>	
+                     </div>
+                     
+					 @endforeach
+					 
+				</div>
+				</div>
+				@else
+				<h2 class="text-center not-available">New Task is not Available</h2>
+				
+				@endif
+
+
+<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script> 
+    <script type="text/javascript" src='{{asset("js/bootstrap.min.js")}}'></script>
+    <script type="text/javascript" src='{{asset("js/iscroll.js")}}'></script>
+    <script type="text/javascript" src='{{asset("js/main.js")}}'></script>
+    <script type="text/javascript" src='{{asset("js/slick.min.js")}}'></script> 
+    <script type="text/javascript">
+	function OpenHoverstate(id) {	
+ 
+		 jQuery("#open_"+id).hide();
+		  jQuery("#open_"+id).animate({"left":"810px"}, "slow");
+		    jQuery("#close_"+id).show();
+			 jQuery("#close_"+id).animate({"left":"0px"}, "slow");
+	}
+	function CloseHoverstate(id) {	
+   jQuery("#close_"+id).hide();
+   jQuery("#close_"+id).animate({"left":"810px"}, "slow");
+		 jQuery("#open_"+id).show();
+		   jQuery("#open_"+id).animate({"left":"0px"}, "slow");
+	}
+	</script> 
+<script type="text/javascript">
+	jQuery( "#opent1a .dot_icon" ).click(function() {});
+	jQuery( "#open1a .close_icon" ).click(function() {});
+
+	jQuery('.dot_icon').click(function(){
+		//alert(jQuery(this).parent().attr('class'));
+		jQuery('.mid_other1').fadeOut( "slow");
+	  	jQuery(this).parent().next().fadeIn( "slow", function() {
+		// Animation complete.
+	  	});
+	  });
+	  jQuery('.close_icon').click(function(){
+		jQuery(this).parent().fadeOut( "slow", function() {
+		// Animation complete.
+	  });
+		});
+		  jQuery(document).on('click','.close_btn',function(){
+		  jQuery(this).parent().fadeOut("slow",function(){});
+		});
+  </script> 
+  <script>
+(function($) {
+	$=jQuery;
+  var rotate, timeline;
+
+  rotate = function() {
+    return $('.card:first-child').fadeOut(400, 'swing', function() {
+      return $('.card:first-child').appendTo('.container_rotate').hide();
+    }).fadeIn(400, 'swing');
+  };
+
+  timeline = setInterval(rotate, 1200);
+
+  $('body').hover(function() {
+    return clearInterval(timeline);
+  });
+
+  /*$('.card').click(function() {
+	  //alert("fhdjfhjdhf");
+    return rotate();
+  });*/
+
+  	$(".apply_project").click(function(){
+    	
+    	if(confirm("You really want apply this project?"))
+    	{
+		   $.ajax({
+            url: '/project/testUrl/{id}',
+            type:'GET',
+            data:{id:this.id},
+            success: function(response)
+                {
+                    if(response=="fail"){
+                    	alert("You have already joined this task")
+                    }else{
+                    	alert("You joined the task successful")
+                    }
+                    return rotate();
+                }
+            });
+		} else {
+		   return false;
+		}
+    	
+	});
+
+	$(".skip_project").click(function(){
+	  
+		if (confirm("You really want skip this project?")) {
+         	return rotate();
+         
+		} else {
+		   return false;
+		}
+	});
+
+
+}).call(this);
+
+
+</script>
+
+

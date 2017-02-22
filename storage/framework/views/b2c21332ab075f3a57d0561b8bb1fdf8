@@ -1,0 +1,40 @@
+
+<?php $__env->startSection('content'); ?>
+
+
+
+		<title>Shokse</title>
+		<link rel="stylesheet" type="text/css" href="/animate.css">
+		<link rel="stylesheet" type="text/css" href="/css/app.css">
+		<link rel="stylesheet" type="text/css" href=<?php echo e(asset('wiki/wiki.css')); ?>>
+		<link href="<?php echo e(asset('css/bootstrap-flatly.css')); ?>" rel="stylesheet">
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+		<script src="/pace.min.js"></script>
+		<script src="/bootstrap.min.js"></script>
+		<div class="container-fluid fill full-page">
+			<div class="col-sm-3 col-md-2 navigation-bar" style = "padding-top:3%;background-color:#F7f7f7">
+				<h3>Documentation</h3>
+
+				<nav style = "color:rgba(48, 111, 167, 0.88)">
+					<ul class="nav nav-pills nav-stacked">
+						<li>
+							<a href=<?php echo e(url("/".$name."/wiki")); ?>>Home</a>
+						</li>
+
+						<?php foreach($pages as $orphan): ?>
+						<li>
+							<a href= <?php echo e(url("/".$name."/wiki/".$orphan->id)); ?>><?php echo e($orphan->title); ?></a>
+						</li>
+						<?php endforeach; ?>
+					</ul>
+				</nav>
+			</div>
+			<div class="col-sm-9 col-md-10 fill content animated fadeIn" style = "padding-top:3%">
+				<?php echo $__env->yieldContent('contentPane'); ?>
+			</div>
+		</div>
+		<?php echo $__env->yieldContent('scripts'); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	    <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <link rel="stylesheet" type="text/css" href="css/landing/font-awesome.min.css">
+	    <link rel="stylesheet" type="text/css" href="css/landing/style.css">
+      <link rel="stylesheet" href="css/landing/owl.carousel.css">
+      <link rel="stylesheet" href="css/landing/owl.theme.default.min.css">
+	</head>
+  	<body>
+      <div class="container-fluid">
+
+        <header>
+          <div class="container-fluid">
+            <div class="col-xs-12 col-sm-4">
+               <div class="header-right">
+                <div class="header-right-img hidden-xs">
+                  <img class="img-responsive anim" src="img/header-right.png" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+          <nav class="navbar navbar-default">
+            <div class="container-fluid">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="col-xs-12 col-sm-4 header-right">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="#"><img src="img/LOGO-shokse-web.png" style = "height:50px;width:200px" alt="Logo"></a>
+                </div>
+              </div>
+
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="col-xs-12 col-sm-8">
+                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                 <div class="col-xs-12 col-sm-6 menu-list-container">
+                    <ul class="nav navbar-nav">
+                      <li><a href="#home">Home</a></li>
+                      <li><a href="#testimonial">Service</a></li>
+                      <li><a href="#work">Work</a></li>
+                      <li><a href="#about">About</a></li>
+                    </ul>
+                 </div>
+
+                 <div class="col-xs-12 col-sm-6 my-account">
+                   <a href="/auth/login" class="btn btn-my-account">My Account</a>
+                 </div>
+                </div><!-- /.navbar-collapse -->
+              </div>
+            </div><!-- /.container-fluid -->
+          </nav>
+        </header><!-- header -->
+
+        <main>
+          <section class="done-section" id="home">
+            <img class="img-responsive anim left-img" src="img/layer-4.png" alt="">
+            <div class="container text-center">
+              <div class="done-section-content" style = "margin-top:10%">
+                <h1><span>Get the Project</span>Done</h1>
+                <p>From the Support of The Expert Web, App<br>& UI/UX Community.</p>
+               <a class="btn btn-get-started" href = "/auth/register">Get Started</a>
+              </div>
+            </div>
+            <img class="img-responsive anim right-img" src="img/layer-3.png" alt="">
+          </section><!-- done-section -->
+
+          <section class="how-it-works">
+            <section class="how-it-works-heading-section">
+              <img class="img-responsive" src="img/layer-5.png" alt="">
+              <h2>How  It Works?</h2>
+            </section><!-- how-it-works-heading-section -->
+
+            <section class="how-it-works-first-section">
+              <div class="container">
+                <div class="col-xs-12 col-sm-6">
+                  <img class="img-responsive" src="img/layer-6.png" alt="">
+                </div>
+                <div class="col-xs-12 col-sm-6 how-it-works-first-section-text animate-opacity">
+                  <h3 class="clearfix"><i>1</i><span>Shokse Matches the<br> Expert with Your Project</span></h3>
+                  <p>Shokse select and matches the appprociate project expert to the spcific project in need of development.</p>
+                  <img class="img-responsive" src="img/shape-1.png" alt="">
+                </div>
+              </div>
+            </section><!-- how-it-works-first-section -->
+                
+            <section class="how-it-works-second-section">
+              <div class="container">
+                <div class="col-xs-12 col-sm-6 visible-xs">
+                  <img class="img-responsive" src="img/layer-9.png" alt="">
+                </div>
+                <div class="col-xs-12 col-sm-6 how-it-works-second-section-text animate-opacity">
+                  <h3 class="clearfix"><i>2</i><span>Shokse Breaks Down<br> the Project into Tasks</span></h3>
+                  <p>Project expert breakes the project down into mupltipe mini-tasks and then assigns the mini-tasks to Shokse's vetted talent pool.</p>
+                  <img class="img-responsive" src="img/shape-2.png" alt="">
+                </div>
+                <div class="col-xs-12 col-sm-6 hidden-xs">
+                  <img class="img-responsive" src="img/layer-9.png" alt="">
+                </div>
+              </div>
+            </section><!-- how-it-works-second-section -->
+
+            <section class="how-it-works-third-section">
+              <div class="container">
+                <div class="col-xs-12 col-sm-6">
+                  <img class="img-responsive" src="img/layer-10.png" alt="">
+                </div>
+                <div class="col-xs-12 col-sm-6 how-it-works-third-section-text animate-opacity">
+                  <h3 class="clearfix"><i>3</i><span>Freelancers Complete<br>the Tasks</span></h3>
+                  <p>Shokse assignes the mini-tasks to the freelance developers; which are assigned to the mini-tasks based on upon their specialization and work history.</p>
+                </div>
+              </div>
+            </section><!-- how-it-works-third-section -->
+
+          </section><!-- how-it-works -->
+
+            <section class="about-us-section" id="about">
+              <div class="container">
+                <h2 class="title-section">about us</h2>
+                <div class="row"> 
+                  <div class="col-xs-12 col-md-8 col-md-offset-2">
+                    <div class="about-text-content">
+                      <p class="about-first-text">We are a group of senior developers with five to ten years of industry experience. Over the years we aggregated a network of high quality freelance developers that have worked seamlessly with us to deliver agile and high quality projects in web and IOS.</p>
+<!--                       <p class="about-second-text">Shokse matches the perfect candidate to your projects in need. No matter how complicated, the Shokse management system gets your project done faster and better.</p>
+ -->                    </div>
+                  </div>  
+                </div>
+                <div class="row">
+                <div class="col-xs-12 col-sm-4">
+                  <div class="about-qualificaton-container about-qualificaton-container-left">
+                    <img src="img/qualification-icon-1-1.png" alt="small-icon" class="img-responsive small-icon">
+                    <h3 class="qualificaton-title">Expedient</h3>
+                    <p class="qualificaton-text">A crowd of experienced developers work on your project concurrently reducing your development time by half</p>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                  <div class="about-qualificaton-container about-qualificaton-container-center">
+                    <img  src="img/qualification-icon-2-1.png" alt="small-icon" class="img-responsive small-icon">
+                    <h3 class="qualificaton-title">Reliable</h3>
+                    <p class="qualificaton-text">Developers with five to ten years industry experience manage your project guaranteeing exceptional work</p>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                  <div class="about-qualificaton-container about-qualificaton-container-right">
+                    <img src="img/qualification-icon-3-1.png" alt="small-icon" class="img-responsive small-icon">
+                    <h3 class="qualificaton-title">Agile</h3>
+                    <p class="qualificaton-text">Update and make changes to your project anytime and anywhere by our visualized progress viewer</p>
+                  </div>
+                </div>
+                </div>
+              </div><!-- container -->
+            </section><!-- about-us-section  -->
+
+            <section class="what-we-do-section" id="work">
+              <h2 class="title-section">What We Do</h2>
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="what-we-do-container">
+                      <img src="img/what-we-do-1.png" alt="">
+                      <h3 class="what-we-do-title">Web Development</h3>
+                      <p class="what-we-do-text"></p>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="what-we-do-container">
+                      <img src="img/what-we-do-2.png" alt="">
+                      <h3 class="what-we-do-title">Data Analytics</h3>
+                      <p class="what-we-do-text"></p>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="what-we-do-container">
+                      <img src="img/what-we-do-3.png" alt="">
+                      <h3 class="what-we-do-title">Visual Computing</h3>
+                      <p class="what-we-do-text"></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="what-we-do-container">
+                      <img src="img/what-we-do-4.png" alt="">
+                      <h3 class="what-we-do-title">UI / UX</h3>
+                      <p class="what-we-do-text"></p>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="what-we-do-container">
+                      <img src="img/what-we-do-5.png" alt="">
+                      <h3 class="what-we-do-title">Android Deveolopment</h3>
+                      <p class="what-we-do-text"></p>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="what-we-do-container">
+                      <img src="img/what-we-do-6.png" alt="">
+                      <h3 class="what-we-do-title">iOS Development</h3>
+                      <p class="what-we-do-text"></p>
+                    </div>
+                  </div>
+                </div>
+                <button class="btn btn-get-started">View Works</button>
+              </div><!-- container -->
+            </section><!-- what-we-do-section -->
+
+            <section class="testimonial-section" id="testimonial">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-6 col-md-offset-3">
+                    <div class="owl-carousel">
+                      <div class="slides-comment-container">
+                        <p class="slides-text">Mass collaboration is the future of competitive advantage in business</p>
+                        <p class="slides-text-author">Nick Wricht</p>
+                      </div>
+                      <div class="slides-comment-container">
+                        <p class="slides-text">As long as somebody finds it meaningful, the work will get done</p>
+                        <p class="slides-text-author">Karim Lakhani</p>
+                      </div>
+                      <div class="slides-comment-container">
+                        <p class="slides-text">Coming together is beginning; keeping together is progress; working together is success</p>
+                        <p class="slides-text-author">Henry Ford</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div><!-- container -->
+            </section><!-- testimonial-section -->
+
+        </main><!-- main -->
+
+        <footer class="footer">
+           <div class="container">
+              <div class="upper-footer clearfix">
+              <div class="col-sm-4 footer-logo">
+                  <img class='logo' src="img/LOGO-shokse-web.png" alt="logo" style = "height:40px">
+                  <p class="footer-text">Shokse matches the perfect candidate to your projects in need. No matter how complicated, the Shokse management system gets your project done faster and better.</p>
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+              </div>
+               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                  <div class="col-sm-3 footer-about-us">
+                    <h3 class="footer-title">ABOUT US</h3>
+                    <p><a href="#" class="footer-link">Who We Are</a></p>
+<!--                     <p><a href="#" class="footer-link">Our History</a></p>
+                    <p><a href="#" class="footer-link">Investors</a></p>
+                    <p><a href="#" class="footer-link">Our Studio</a></p> -->
+                  </div>
+                  <div class="col-sm-3 footer-quick-links">
+                    <h3 class="footer-title">QUICK LINKS</h3>
+                    <p><a href="#" class="footer-link">Register</a></p>
+<!--                     <p><a href="#" class="footer-link">Sign in</a></p>
+ -->  <!--                   <p><a href="#" class="footer-link">FAQ</a></p> -->
+                  </div>
+                  <div class="col-sm-2 footer-supports">
+                    <h3 class="footer-title">SUPPORTS</h3>
+                    <p><a href="#" class="footer-link">Contact Us</a></p>
+                  </div>
+               </div>
+              </div> <!-- upper-footer -->
+            <div class="lower-footer">
+              <div class="col-xs-12 col-sm-4 col-md-3 clearfix">
+                  <ul class="social">
+                    <li class="social-item"><a href="#" class="social-link"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                    <li class="social-item"><a href="#" class="social-link"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    <li class="social-item"><a href="#" class="social-link"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                    <li class="social-item"><a href="#" class="social-link"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                    <li class="social-item"><a href="#" class="social-link"><i class="fa fa-behance" aria-hidden="true"></i></a></li>
+                    <li class="social-item"><a href="#" class="social-link"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+                  </ul> <!-- social -->
+                </div>
+                <div class="col-xs-12 col-xs-offset-0 col-sm-8 col-sm-offset-0 col-lg-6 col-lg-offset-3">
+                  <ul class="lower-footer-list">
+                    <li class="lower-footer-item"><p class="footer-text">© 2016 Shokse Ltd</p></li>
+                    <li class="lower-footer-item"><a class="footer-link" href="#">Terms and Conditions</a></li>
+                    <li class="lower-footer-item"><a class="footer-link" href="#">Privacy Policy</a></li>
+                  </ul>
+                </div>
+            </div> <!-- lower-footer --> 
+           </div>
+        </footer> <!-- footer -->
+
+      </div><!-- container-fluid -->
+	    <script src="js/landing/jquery-1.12.2.min.js"></script>
+      <script src="js/landing/bootstrap.min.js"></script>
+      <script src='js/landing/owl.carousel.min.js'></script>
+      <script src='js/landing/jquery.scrollTo-1.4.3.1.js'></script>
+	    <script src="js/landing/script.js"></script>
+    </body>
+</html>

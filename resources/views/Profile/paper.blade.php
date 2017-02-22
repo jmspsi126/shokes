@@ -25,7 +25,7 @@
                     <div>
                         <h4 class = "subtitle">PERSONAL STATEMENT</h4>
                         <p style = "text-align: justify">
-                            I am an informatics student at UCI researching on Crowdsoucing technology. I am interested in computer technologies and skills with which I can help make people's lives easier. In the past,I built a N.A.P website which connects international students with local service vendors, providing them with direct access to services that they need, but are usually not readily accessible.
+                           Resume is current locked till your first task completed.
                         </p>
                     </div>
 
@@ -54,9 +54,15 @@
                                 <img src="{{asset('img/oppsite.png')}}" style = "opacity: 0.5">
                                 <h5>Oppsite</h5>
                                 <p>0</p>
+
+
                             </div>
                     </div>
+
+
+
                 </div>
+
                 <div class = "col-md-6 col-md-offset-1 experience">
                     <h4 class = "subtitle" >EXPERIENCE</h4>
                     <div class = "col-md-1 side">
@@ -72,7 +78,7 @@
                     </div>
 
                     <div class = "col-md-10">
-                        @include('profile.experience')
+                        @include('Profile.experience')
                     </div>
 
                     <div class = "header" style = "cursor:pointer">
@@ -80,67 +86,76 @@
                     </div>
 
                     <div class = "col-md-10 col-md-offset-1 content" style = "display:none">
-                        @include('profile.experience')
+                        @include('Profile.experience')
                     </div>
+
+
+
                 </div>
 
                 <div class = "col-md-6 col-md-offset-1 education">
                     <h4 class = "subtitle" >EDUCATION</h4>
                     <div class = "col-md-1 education-arrow">
                         <span class ="glyphicon glyphicon-chevron-right"></span>
-                        <br>
-                        <span class ="glyphicon glyphicon-chevron-right" style = "margin-top:29px"></span>
                     </div>
 
                     <div class = "col-md-5">
                         <h5>University Of California Irvine</h5>
-                        <h6>Computer Science Bachlor degree</h6>
-                        <h5>Stanford University</h5>
-                        <h6>Summary Session</h6>
                     </div>
                 </div>
 
                 <div class = "col-md-6 col-md-offset-1 reference">
                     <h4 class = "subtitle" >REFERENCE</h4>
                     <div class = "col-md-12">
-                        <div class = "col-md-4 reference-text">
-                            <h4>Michle Mah</h4>
-                            <p>Project Management at Accenture</p>
-                        </div>
+                        {{--<div class = "col-md-4 reference-text">--}}
+                            {{--<h4>Michle Mah</h4>--}}
+                            {{--<p>Project Management at Accenture</p>--}}
+                        {{--</div>--}}
 
-                        <div class = "col-md-8 reference-content">
-                            <p>"Muamer is an extraordinary freelancer with great skills. Done 4-5 Projects with him, never had a complaint"</p>
-                        </div>
+                        {{--<div class = "col-md-8 reference-content">--}}
+                            {{--<p>"Muamer is an extraordinary freelancer with great skills. Done 4-5 Projects with him, never had a complaint"</p>--}}
+                        {{--</div>--}}
+
 
                     </div>
 
-                    <div class = "col-md-12">
-                        <div class = "col-md-4 reference-text">
-                            <h4>Michle Mah</h4>
-                            <p>Project Management at Accenture</p>
-                        </div>
+                    {{--<div class = "col-md-12">--}}
+                        {{--<div class = "col-md-4 reference-text">--}}
+                            {{--<h4>Michle Mah</h4>--}}
+                            {{--<p>Project Management at Accenture</p>--}}
+                        {{--</div>--}}
 
-                        <div class = "col-md-8 reference-content">
-                            <p>"Muamer is an extraordinary freelancer with great skills. Done 4-5 Projects with him, never had a complaint"</p>
-                        </div>
-                    </div>
+                        {{--<div class = "col-md-8 reference-content">--}}
+                            {{--<p>"Muamer is an extraordinary freelancer with great skills. Done 4-5 Projects with him, never had a complaint"</p>--}}
+                        {{--</div>--}}
 
-                    <div class = "col-md-12">
-                        <div class = "col-md-4 reference-text">
-                            <h4>Michle Mah</h4>
-                            <p>Project Management at Accenture</p>
-                        </div>
 
-                        <div class = "col-md-8 reference-content">
-                            <p>"Muamer is an extraordinary freelancer with great skills. Done 4-5 Projects with him, never had a complaint"</p>
-                        </div>
-                    </div>
-                    
+                    {{--</div>--}}
+
+                    {{--<div class = "col-md-12">--}}
+                        {{--<div class = "col-md-4 reference-text">--}}
+                            {{--<h4>Michle Mah</h4>--}}
+                            {{--<p>Project Management at Accenture</p>--}}
+                        {{--</div>--}}
+
+                        {{--<div class = "col-md-8 reference-content">--}}
+                            {{--<p>"Muamer is an extraordinary freelancer with great skills. Done 4-5 Projects with him, never had a complaint"</p>--}}
+                        {{--</div>--}}
+
+
+                    {{--</div>--}}
+
                     <P>Q</P>
-                    
+
+
                 </div>
+
+
+
             </div>
+
         </div>
+
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>

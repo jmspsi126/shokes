@@ -4,7 +4,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class skill extends Model {
 
-	protected $table = "skills";
+    protected $table = "skills";
+    
+    protected $fillable = ['name'];
 
     public function user()
     {
@@ -17,7 +19,11 @@ class skill extends Model {
     }
     public function skillUser()
     {
-    	return $this->hasMany('App\SkillUser');
+        return $this->hasMany('App\SkillUser');
+    }
+    public function project()
+    {
+	return $this->belongsToMany('App\project');
     }
 
 }

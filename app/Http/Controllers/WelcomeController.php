@@ -1,4 +1,6 @@
 <?php namespace App\Http\Controllers;
+use Illuminate\Contracts\Auth\Guard;
+
 
 class WelcomeController extends Controller {
 
@@ -27,22 +29,20 @@ class WelcomeController extends Controller {
 
 	public function __construct()
 	{
+        $this->middleware('guest');
 
 	}
 
 	public function index()
 	{
-		return view('task');
+		return view('landing');
 	}
 
-	public function login()
-	{
+	public function howitwork(){
 		return view('welcome');
+
 	}
 
-	public function lazy()
-	{
-		return view('lazylogin');
-	}
+
 
 }

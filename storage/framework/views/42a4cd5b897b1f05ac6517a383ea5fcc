@@ -1,3 +1,5 @@
+
+
 <?php $__env->startSection('addheader'); ?>
     <link href="<?php echo e(asset('css/profile.css')); ?>" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Raleway:200,300' rel='stylesheet' type='text/css'>
@@ -9,12 +11,11 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
+
 	<div class="row">
 
 			<?php echo $__env->make('Profile.partial', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-	<?php if($user->ranks()->first()): ?>
 
-	<?php endif; ?>
 
 	<script type="text/javascript">
 
@@ -64,12 +65,12 @@
 			var rect = [];
 			var rectCount = 0;
 	
-			<?php foreach($skillUsers as $key=>$item): ?>
-				atext[<?php echo e($key); ?>] = '<?php echo e($item->skill->name); ?>';
-				aData[<?php echo e($key); ?>] = '<?php echo e($item->hour); ?>';
-				aLevel[<?php echo e($key); ?>] = '<?php echo e($item->level); ?>';
-			<?php endforeach; ?>
-			
+			<?php /*<?php foreach($skillUsers as $key=>$item): ?>*/ ?>
+				<?php /*atext[<?php echo e($key); ?>] = '<?php echo e($item->skill->name); ?>';*/ ?>
+				<?php /*aData[<?php echo e($key); ?>] = '<?php echo e($item->hour); ?>';*/ ?>
+				<?php /*aLevel[<?php echo e($key); ?>] = '<?php echo e($item->level); ?>';*/ ?>
+			<?php /*<?php endforeach; ?>*/ ?>
+			<?php /**/ ?>
 			var space = 20;
 			var topSpace = canvas.height*0.3;
 			var iMax=Math.max.apply(null,aData)

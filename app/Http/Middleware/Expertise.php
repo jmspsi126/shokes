@@ -16,13 +16,19 @@ class Expertise
     public function handle($request, Closure $next)
     {
 
-        if($request->user()->isCompany){
-            return redirect('company/project');
-        }
+        if(!$request->user()->isExpertise){
 
-        if($request->user()->isStudent){
-            return redirect('profile');
-        }
+
+                if($request->user()->isCompany){
+                    return redirect('client/manage');
+                }
+
+
+                if($request->user()->isStudent){
+                    return redirect('profile');
+                }
+
+            }        
 
         return $next($request);
     }

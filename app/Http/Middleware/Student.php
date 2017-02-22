@@ -15,13 +15,18 @@ class Student
      */
     public function handle($request, Closure $next)
     {
-        if($request->user()->isCompany){
-            return redirect('company/project');
+
+        if(!$request->user()->isStudent){
+
+            if($request->user()->isCompany){
+                return redirect('client/manage');
+            }
+
+            if($request->user()->isExpertise){
+                return redirect('expertise');
+            }
         }
 
-        if($request->user()->isExpertise){
-            return redirect('company/expertise');
-        }
 
         return $next($request);
     }

@@ -11,24 +11,31 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
-
     <div class="container" style="margin-top:7%">
         
         <div class="row">
-            <div class="col-md-4 ">
+            <div class="col-md-4 col-md-offset-2">
                 <div class="card-container">
+                    <h3 class="text-center">OVERVIEW</h3>
                     <div class="card">
                         <div class="front">
-                            <h3 class="text-center">INTRODUCTION</h3>
 
                             <div class="center ImgContainer">
                                 <img src="<?php echo e(asset('img/flyer.png')); ?>">
+                                <?php /*<a href =<?php echo e(url("/". $project->id. "/wiki")); ?>><img src="<?php echo e(asset('img/flyer.png')); ?>"></a>*/ ?>
                             </div>
                         </div>
                         <!-- end front panel -->
                         <div class="back">
-                            <?php echo $project->description; ?>
-
+                            <img src="<?php echo e(asset('img/users.png')); ?>" style = "display:inline">
+                            <p  style = "display:inline">
+                            User level : Apprentice
+                            </p>
+                            <br>
+                            <img src="<?php echo e(asset('img/trust.png')); ?>"  style = "display:inline;padding-top:15px">
+                            <p  style = "display:inline">
+                            Trust level : \n
+                            </p>
                         </div>
                         <!-- end back panel -->
                     </div>
@@ -40,34 +47,51 @@
 
             <div class="col-md-4 ">
                 <div class="card-container">
+                    <h3 class="text-center">MINITASK</h3>
+
                     <div class="card">
-                        <div class="front">
-                            <h3 class="text-center">MISCROTASK</h3>
+                        <div class="front" id ="task">
 
                             <div class="col-xs-6">
-                                <h1 class="text-center" style="font-family:'Raleway';font-size:700%;font-weight:300" ;>
-                                    <?php echo e($count); ?>
 
-                                </h1>
+                                    <?php /*href = <?php echo e(URL('/project/task')); ?>*/ ?>
+                                   <a style="color: black; text-decoration: none;">
+                                    <?php /*<?php echo e($count); ?>*/ ?>
+                                       <div id="clockdiv">
+                                           <div>
+                                               <h1 class="text-center" style="font-family:'Raleway';font-weight:300" ;>
+                                                    <span class="days"></span>
+                                               </h1>
+
+                                                <p>days</p>
+
+                                               <div>
+
+                                               <h1 class="text-center" style="font-family:'Raleway';font-weight:300" ;>
+                                                   <span class="hours"></span>:
+                                                    <span class="minutes"></span>
+                                               </h1>
+                                                   <p>Minutes Remaining</p>
+                                                </div>
+                                           </div>
+
+                                       </div>
+                                   </a>
                             </div>
                             <div class="col-xs-6" style="margin-top:15%;margin-left:-5%">
-                                <p>Microtasks now available on this project</p>
+                                <img src="<?php echo e(asset('img/Scope.png')); ?>" style = "margin-top:-15%;width:108px">
                             </div>
                         </div>
-                        <!-- end front panel -->
                         <div class="back">
-                            <div class = 'slide'>
-                                <?php foreach($tasks as $task): ?>
+                            <img src="<?php echo e(asset('img/task.png')); ?>"  style = "display:inline">
+                            <h4 style = "display:inline"><?php echo e($task->name); ?></h4>
+                            <br>
+                            <img src="<?php echo e(asset('img/currency.png')); ?>" style = "display:inline;width:48px">
+                            <h4 style = "display:inline">$200.00</h4>
+                            <br>
+                            <a href = <?php echo e(URL('/project/task/'.$task->id)); ?>><button type="button" class="notactive btn btn-secondary-outline" style = "margin-top:15px;">View Task</button></a>
 
-                                <div id = <?php echo e($task->id); ?> style = "height:280px;display:none">
-                                    <h3><?php echo $task->name; ?></h3>
-                                    <p><?php echo $task ->description; ?></p>
-
-                                </div>
-                            <?php endforeach; ?>
-                            </div>
                         </div>
-                        <!-- end back panel -->
                     </div>
                     <!-- end card -->
                 </div>
@@ -75,140 +99,142 @@
             </div>
             <!-- end col md 4 -->
 
-            <div class="col-md-4 ">
+            <div class="col-md-4 col-md-offset-2 ">
                 <div class="card-container">
-<!--                     <div class="card">
- -->                        <div class="front">
-                            <h3 class="text-center" style="margin-bottom:7%">WORKING SPACE</h3>
+                    <h3 class="text-center" style="margin-bottom:7%">Environment Setup</h3>
+
+                                       <div class="card">
+                                             <div class="front">
 
                             <div class="col-xs-5 col-xs-offset-1">
-                                 <a href = "<?php echo e(url("/project/compile")); ?>">
                                     <img src="<?php echo e(asset('img/wege.png')); ?>">
-                                </a>
                             </div>
 
                             <div class="col-xs-5" style="margin-top:4%; margin-left: 7%">
-                                <p>C/C++</p>
-
-                                <p>Java</p>
-
-                                <p>Visual Studio</p>
+                                <?php /*<?php echo e($project->enviornment); ?>*/ ?>
                             </div>
                         </div>
                         <!-- end front panel -->
                         <div class="back">
-                            <?php echo e($project->environment); ?>
+                            <img src="<?php echo e(asset('img/Box.png')); ?>" style = "display:inline;height: 48px;width: 48px;">
+                            <h4 style = "display:inline;">Remote Desktop</h4>
+                            <br>
+                            <a href = <?php echo e(URL('#')); ?>><button type="button" class="notactive btn btn-secondary-outline" style = "margin-top:15px">Not Open</button></a>
 
+                            <?php /*<?php echo e($project->environment); ?>*/ ?>
                         </div>
                         <!-- end back panel -->
-<!--                     </div>
- -->                    <!-- end card -->
-                </div>
-                <!-- end card-container -->
-            </div>
-            <!-- end col md 4 -->
-
-            <div class="col-md-3 ">
-                <div class="card-container" style="height: 140px;margin-bottom: 0px;">
-<!--                     <div class="card">
- -->                        <div class="front">
-                            <h3 class="text-center">USER MANAGER</h3>
-
-                            <div class="center">
-                                <img src="<?php echo e(asset('img/People.png')); ?>">
-
-                            </div>
-                        </div>
-                        <!-- end front panel -->
-                        <div class="back">
-                            <img src="<?php echo e(asset('img/profile1.png')); ?>" style="height:80px; width:80px">
-                            <img src="<?php echo e(asset('img/profile2.png')); ?>" style="height:80px; width:80px">
-                            <img src="<?php echo e(asset('img/profile3.png')); ?>" style="height:80px; width:80px">
-
-                        </div>
-                        <!-- end back panel -->
-<!--                     </div>
- -->                    <!-- end card -->
-                </div>
-                <!-- end card-container -->
-
-                <div class="row">
-                    <div class="col-xs-6 center" style="margin-top:2%; height:8em;padding-top:5%">
-
-                        <div class="card-container" style="height: 140px;margin-bottom: 0px;">
-                            <div class="card">
-                                <div class="front">
-
-                                    <img src="<?php echo e(asset('img/Reward.png')); ?>">
-                                </div>
-                                <!-- end front panel -->
-
-                                <div class="back">
-
-                                    <h5>Award Startbucks Gift Card</h5>
-                                </div>
-                                <!-- end back panel -->
-                            </div>
-                            <!-- end card -->
-                        </div>
-                        <!-- end card-container -->
-                    </div>
-
-                    <div class="col-xs-6 center" style="margin-top:2%;height:8em;padding-top:5%">
-
-                        <img src="<?php echo e(asset('img/delete.png')); ?>">
-                    </div>
-                </div>
-
-            </div>
-            <!-- end col md 4 -->
-
-            <div class="col-md-6">
-                <div class="card-container">
-                    <div class="card">
-                        <div class="front">
-                            <h3 class="text-center">PROJECT SCOPE</h3>
-
-                            <div class="center col-md-6" style="margin-top:3%;">
-                                <img src="<?php echo e(asset('img/performence.png')); ?>">
-                            </div>
-
-                            <div class="center col-md-6" style="margin-top:3%;">
-                                <img src="<?php echo e(asset('img/Piechart.png')); ?>">
-                            </div>
-                        </div>
-                        <!-- end front panel -->
-                        <div class="back">
-                            <div class="col-md-6">
-                                <canvas id="demo" width="280" height="280" style="margin-top:-7%;"></canvas>
-                            </div>
-                            <div class="col-md-6">
-                                <h4>Estimate Time</h4>
-                                <ul>
-                                    <li>Elementery Engineer: 15 Hour</li>
-                                    <li>Sinior Engineer: 10 Hour</li>
-                                </ul>
-                                <h4>Project Distribution</h4>
-                                <ul>
-                                    <li>Back End: 5~10 Hour</li>
-                                    <li>Front End: 10~20 Hour</li>
-                                    <li>Debut: 5~ 10 Hour</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- end back panel -->
-                    </div>
+                     </div>
                     <!-- end card -->
                 </div>
                 <!-- end card-container -->
             </div>
             <!-- end col md 4 -->
 
-            <div class="col-md-2">
+            <?php /*<div class="col-md-3 ">*/ ?>
+                <?php /*<div class="card-container" style="height: 140px;margin-bottom: 0px;">*/ ?>
+                    <?php /*<h3 class="text-center">COMMUNICATION</h3>*/ ?>
+
+                    <?php /*<div class="card">*/ ?>
+                         <?php /*<div class="front">*/ ?>
+
+                            <?php /*<div class="center">*/ ?>
+                                <?php /*<img src="<?php echo e(asset('img/People.png')); ?>">*/ ?>
+
+                            <?php /*</div>*/ ?>
+                        <?php /*</div>*/ ?>
+                        <?php /*<!-- end front panel -->*/ ?>
+                        <?php /*<div class="back">*/ ?>
+                            <?php /*<img src="<?php echo e(asset('img/single.png')); ?>" style="height:48px; width:48px;display:inline">*/ ?>
+                            <?php /*<h4 style = "display:inline">Contact Shokse Team</h4>*/ ?>
+                            <?php /*<a href = <?php echo e(URL('/project/task')); ?>><button type="button" class="notactive btn btn-secondary-outline" style = "margin-top:15px;">Contact</button></a>*/ ?>
+
+
+                        <?php /*</div>*/ ?>
+                        <?php /*<!-- end back panel -->*/ ?>
+                    <?php /*</div>*/ ?>
+                   <?php /*<!-- end card -->*/ ?>
+                <?php /*</div>*/ ?>
+                <?php /*<!-- end card-container -->*/ ?>
+
+                <?php /*<div class="row">*/ ?>
+                    <?php /*<div class="col-xs-6 center" style="margin-top:2%; height:8em;padding-top:5%">*/ ?>
+
+                        <?php /*<div class="card-container" style="height: 140px;margin-bottom: 0px;">*/ ?>
+                            <?php /*<div class="card">*/ ?>
+                                <?php /*<div class="front">*/ ?>
+
+                                    <?php /*<img src="<?php echo e(asset('img/Reward.png')); ?>">*/ ?>
+                                <?php /*</div>*/ ?>
+                                <?php /*<!-- end front panel -->*/ ?>
+
+                                <?php /*<div class="back">*/ ?>
+
+                                    <?php /*<h5>Extra Bounce</h5>*/ ?>
+                                <?php /*</div>*/ ?>
+                                <?php /*<!-- end back panel -->*/ ?>
+                            <?php /*</div>*/ ?>
+                            <?php /*<!-- end card -->*/ ?>
+                        <?php /*</div>*/ ?>
+                        <?php /*<!-- end card-container -->*/ ?>
+                    <?php /*</div>*/ ?>
+
+                    <?php /*<div class="col-xs-6 center" style="margin-top:2%;height:8em;padding-top:5%">*/ ?>
+
+                        <?php /*<img src="<?php echo e(asset('img/delete.png')); ?>">*/ ?>
+                    <?php /*</div>*/ ?>
+                <?php /*</div>*/ ?>
+
+            <?php /*</div>*/ ?>
+            <?php /*<!-- end col md 4 -->*/ ?>
+
+            <?php /*<div class="col-md-6">*/ ?>
+                <?php /*<div class="card-container">*/ ?>
+                    <?php /*<div class="card">*/ ?>
+                        <?php /*<div class="front">*/ ?>
+                            <?php /*<h3 class="text-center">SCHEDULE</h3>*/ ?>
+
+                            <?php /*<div class="center col-md-6" style="margin-top:3%;">*/ ?>
+                                <?php /*<img src="<?php echo e(asset('img/performence.png')); ?>">*/ ?>
+                            <?php /*</div>*/ ?>
+
+                            <?php /*<div class="center col-md-6" style="margin-top:3%;">*/ ?>
+                                <?php /*<img src="<?php echo e(asset('img/Piechart.png')); ?>">*/ ?>
+                            <?php /*</div>*/ ?>
+                        <?php /*</div>*/ ?>
+                        <?php /*<!-- end front panel -->*/ ?>
+                        <?php /*<div class="back">*/ ?>
+
+                            <?php /*<div class="col-md-6">*/ ?>
+                                <?php /*<h4>Estimate Time</h4>*/ ?>
+                                <?php /*<ul>*/ ?>
+                                    <?php /*<li>Elementery Engineer: 15 Hour</li>*/ ?>
+                                    <?php /*<li>Sinior Engineer: 10 Hour</li>*/ ?>
+                                <?php /*</ul>*/ ?>
+                                <?php /*<h4>Project Distribution</h4>*/ ?>
+                                <?php /*<ul>*/ ?>
+                                    <?php /*<li>Back End: 5~10 Hour</li>*/ ?>
+                                    <?php /*<li>Front End: 10~20 Hour</li>*/ ?>
+                                    <?php /*<li>Debug: 5~ 10 Hour</li>*/ ?>
+                                <?php /*</ul>*/ ?>
+                            <?php /*</div>*/ ?>
+                            <?php /*<h4>Schedule system on building</h4>*/ ?>
+                            <?php /*</div>*/ ?>
+
+                        <?php /*</div>*/ ?>
+                        <?php /*<!-- end back panel -->*/ ?>
+                    <?php /*</div>*/ ?>
+                    <?php /*<!-- end card -->*/ ?>
+                <?php /*</div>*/ ?>
+                <?php /*<!-- end card-container -->*/ ?>
+            <?php /*</div>*/ ?>
+            <?php /*<!-- end col md 4 -->*/ ?>
+
+            <div class="col-md-4">
                 <div class="card-container">
                     <div class="card">
                         <div class="front">
-                            <h3 class="text-center">START PROJECT</h3>
+                            <h3 class="text-center">COMMIT PROJECT</h3>
 
                             <div class="center">
                                 <img src="<?php echo e(asset('img/Download.png')); ?>">
@@ -217,12 +243,12 @@
                         </div>
                         <!-- end front panel -->
                         <div class="back center">
-                            <div style="margin-top:35%">
+                            <div style="margin-top:5%">
 
                         <?php echo Form::open(array('url'=>'/project/update','method'=>'POST', 'files'=>true)); ?>
 
                                 <h4>Upload File</h4>
-                                <div class = "form-group">
+                                <div class = "form-group notactive">
                                     <?php echo Form::label(''); ?>
 
                                     <?php echo Form::file('zip'); ?>
@@ -243,42 +269,320 @@
                 <!-- end card-container -->
             </div>
             <!-- end col md 4 -->
+        </div>
+    </div>
 
+    <div class = "container modal-bg" id = "content" style = "position: fixed;display:none">
+        <?php /*<?php if($tasks->first() == []): ?>*/ ?>
+            <?php /*<div id="slider">*/ ?>
+                <?php /*<span>Task<a href="#close" id="close">&#215;</a></span>-e.target
+                <?php echo e(--<ul>*/ ?>
+                    <?php /*<li>*/ ?>
+                    <?php /*<div style = "padding:8%">*/ ?>
+                            <?php /*No task placed on this project yet*/ ?>
+                    <?php /*</div>*/ ?>
+                    <?php /*<li>*/ ?>
+                <?php /*</ul>*/ ?>
+            <?php /*<div>*/ ?>
+        <?php /*<?php else: ?>*/ ?>
+        <div id="slider">
 
+            <span>Task<a href="#close" id="close">&#215;</a></span>
+            <a href="#" class="control_next">></a>
+            <a href="#" class="control_prev"><</a>
+            <ul>
+
+            <?php /*<?php foreach($tasks as $task): ?>*/ ?>
+            <?php /*<li>*/ ?>
+                <?php /*<div style = "padding:8%">*/ ?>
+                <?php /*<h2>{{$task->name); ?></h2>*/ ?>
+                    <?php /*<h4 class = time_>Estimate finish in <?php echo e($task->estimateTime); ?> days</h4>*/ ?>
+                    <?php /*<p><?php echo e($task->description); ?></p>*/ ?>
+                    <?php /*<button id ="<?php echo $task->id; ?>" class = "btn btn-secondary-outline join"}>Join The Task</button>*/ ?>
+                <?php /*</div>*/ ?>
+            <?php /*</li>*/ ?>
+            <?php /*<?php endforeach; ?>*/ ?>
+            <?php /*<?php endif; ?>*/ ?>
+            </ul>
         </div>
 
     </div>
 
+    <style>
+        @import  url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
 
+        #slider {
+            position: relative;
+            overflow: hidden;
+            margin: 20px auto 0 auto;
+            border-radius: 4px;
+        }
+
+        .btn-secondary-outline {
+            color: #ccc;
+            background-color: transparent;
+            background-image: none;
+            border-color: #ccc;
+        }
+
+        #slider ul {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            height: 200px;
+            list-style: none;
+        }
+
+        /*.btn-secondary-outline{*/
+            /*margin-top:5%;*/
+            /*color: #0275d8;*/
+            /*background-color: transparent;*/
+            /*background-image: none;*/
+            /*border-color: #0275d8;*/
+        /*}*/
+
+        .time_{
+            font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+            font-weight: 600;
+            font-size: 12px;
+            color: rgba(0, 0, 0, 0.29);
+        }
+        #slider ul li {
+            position: relative;
+            display: block;
+            float: left;
+            margin: 0;
+            padding: 0;
+            width: 500px;
+            height: 300px;
+            background: #F5F5F6;
+            text-align: center;
+        }
+        .btn {
+            display: inline-block;
+            padding: .375rem 1rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            /*border: 1px solid transparent !important;*/
+            border-radius: .25rem;
+        }
+        a.control_prev, a.control_next {
+            position: absolute;
+            top: 40%;
+            z-index: 999;
+            display: block;
+            padding: 4% 3%;
+            width: auto;
+            height: auto;
+            color: #333;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            opacity: 0.8;
+            cursor: pointer;
+        }
+
+        a.control_prev:hover, a.control_next:hover {
+            opacity: 1;
+            -webkit-transition: all 0.2s ease;
+        }
+
+        a.control_prev {
+            border-radius: 0 2px 2px 0;
+        }
+
+        a.control_next {
+            right: 0;
+            border-radius: 2px 0 0 2px;
+        }
+
+        .slider_option {
+            position: relative;
+            margin: 10px auto;
+            width: 160px;
+            font-size: 18px;
+        }
+
+        .modal-bg{
+            position:fixed;
+            left:0;right:0;
+            top:0;bottom:0;
+            z-index:100;
+            width:100%;
+            background-color:rgba(50,50,50,0.5);
+        }
+
+        #slider span{
+            display: block;
+            background:#5DC3A7;
+            padding: 10px;
+            color:#fff;
+            border-radius:3px;
+        }
+        #close{
+            float: right;
+            color: #fff;
+            font-family: serif;
+            font-size: 15px;
+        }
+        #close:hover{
+            color: #000;
+        }
+
+    </style>
 
     <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
-    <script type="text/javascript">
+    <?php /*<script>*/ ?>
 
-        var count = 1;
-        $('.slide').click(function() {
-            $(".slide #"+count).show('fade');
+            <?php /*$(function(){*/ ?>
+              <?php /*$('.join').click(function(){*/ ?>
+                  <?php /*$.ajax({*/ ?>
+                      <?php /*url: 'testUrl/{id}',*/ ?>
+                      <?php /*type:'GET',*/ ?>
+                      <?php /*data:{id:this.id},*/ ?>
+                      <?php /*success: function(response)*/ ?>
+                      <?php /*{*/ ?>
+                          <?php /*location.reload();*/ ?>
+                      <?php /*}*/ ?>
+                  <?php /*});*/ ?>
 
-             $('.slide').click(function(){
-                $(".slide #"+count).delay(1000).hide('slide');
-            });
-            
-            if(count<<?php echo e($count); ?>){
-            count +=1;
+              <?php /*});*/ ?>
+            <?php /*});*/ ?>
+
+    <?php /*</script>*/ ?>
+
+
+    <?php /*<script>*/ ?>
+        <?php /*jQuery(document).ready(function ($) {*/ ?>
+
+            <?php /*$('#checkbox').change(function(){*/ ?>
+                <?php /*setInterval(function () {*/ ?>
+                    <?php /*moveRight();*/ ?>
+                <?php /*}, 3000);*/ ?>
+            <?php /*});*/ ?>
+
+            <?php /*var slideCount = $('#slider ul li').length;*/ ?>
+            <?php /*var slideWidth = $('#slider ul li').width();*/ ?>
+            <?php /*var slideHeight = $('#slider ul li').height();*/ ?>
+            <?php /*var sliderUlWidth = slideCount * slideWidth;*/ ?>
+
+            <?php /*$('#slider').css({ width: slideWidth, height: slideHeight });*/ ?>
+
+            <?php /*$('#slider ul').css({ width: sliderUlWidth, marginLeft: - slideWidth });*/ ?>
+
+            <?php /*$('#slider ul li:last-child').prependTo('#slider ul');*/ ?>
+
+            <?php /*function moveLeft() {*/ ?>
+                <?php /*$('#slider ul').animate({*/ ?>
+                    <?php /*left: + slideWidth*/ ?>
+                <?php /*}, 200, function () {*/ ?>
+                    <?php /*$('#slider ul li:last-child').prependTo('#slider ul');*/ ?>
+                    <?php /*$('#slider ul').css('left', '');*/ ?>
+                <?php /*});*/ ?>
+            <?php /*};*/ ?>
+
+            <?php /*function moveRight() {*/ ?>
+                <?php /*$('#slider ul').animate({*/ ?>
+                    <?php /*left: - slideWidth*/ ?>
+                <?php /*}, 200, function () {*/ ?>
+                    <?php /*$('#slider ul li:first-child').appendTo('#slider ul');*/ ?>
+                    <?php /*$('#slider ul').css('left', '');*/ ?>
+                <?php /*});*/ ?>
+            <?php /*};*/ ?>
+
+            <?php /*$('a.control_prev').click(function () {*/ ?>
+                <?php /*moveLeft();*/ ?>
+            <?php /*});*/ ?>
+
+            <?php /*$('a.control_next').click(function () {*/ ?>
+                <?php /*moveRight();*/ ?>
+            <?php /*});*/ ?>
+
+        <?php /*});*/ ?>
+
+        <?php /*$('#task').click(function(){*/ ?>
+            <?php /*$('#content').css('display','block');*/ ?>
+            <?php /*$('.modal-bg').fadeIn();*/ ?>
+        <?php /*});*/ ?>
+
+        <?php /*$('#close').click(function(){*/ ?>
+            <?php /*$('.modal-bg').fadeOut();*/ ?>
+            <?php /*$('#content').fadeOut();*/ ?>
+            <?php /*return false;*/ ?>
+        <?php /*});*/ ?>
+
+    <?php /*</script>*/ ?>
+
+
+
+    <script>
+        $( ".card" ).click(function(e) {
+            console.log(e.target.tagName);
+            if (e.target.tagName!="INPUT") {
+            console.log($(e.target).hasClass("notactive"))
+            if ($(this).hasClass("card_flip")) {
+                $(this).removeClass("card_flip");
+            } else {
+                $(this).addClass("card_flip");
+                }
+            }
+        });
+
+        function getTimeRemaining(endtime) {
+            var t = Date.parse(endtime) - Date.parse(new Date());
+            var seconds = Math.floor((t / 1000) % 60);
+            var minutes = Math.floor((t / 1000 / 60) % 60);
+            var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+            var days = Math.floor(t / (1000 * 60 * 60 * 24));
+            return {
+                'total': t,
+                'days': days,
+                'hours': hours,
+                'minutes': minutes,
+                'seconds': seconds
             };
-            else{count=1};
+        }
 
-            var tasks = <?php echo $tasks; ?>;
+        function initializeClock(id, endtime) {
+            var clock = document.getElementById(id);
+            var daysSpan = clock.querySelector('.days');
+            var hoursSpan = clock.querySelector('.hours');
+            var minutesSpan = clock.querySelector('.minutes');
+//            var secondsSpan = clock.querySelector('.seconds');
 
-            document.getElementById('test').innerHTML = "<?php echo e($task->name); ?>";
+            function updateClock() {
+                var t = getTimeRemaining(endtime);
 
-        })
+                daysSpan.innerHTML = t.days;
+                hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+                minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+//                secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
 
+                if (t.total <= 0) {
+                    clearInterval(timeinterval);
+                }
+            }
 
+            updateClock();
+            var timeinterval = setInterval(updateClock, 1000);
+        }
+
+        var deadline = new Date(Date.parse(new Date(<?php echo json_encode($task->created_at->format('M,d Y,h:i:s')); ?>)) + 9 * 24 * 60 * 60 * 1000);
+        console.log(new Date());
+        initializeClock('clockdiv', deadline);
     </script>
-
 
         <script type="text/javascript">
         $().ready(function () {
@@ -315,7 +619,7 @@
                         responsive: true
                     };
 
-            var tasks = <?php echo $tasks; ?>;
+            <?php /*var tasks = <?php echo $tasks; ?>;*/ ?>
 
             var chart = [];
 
@@ -340,4 +644,5 @@
     </script>
 
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

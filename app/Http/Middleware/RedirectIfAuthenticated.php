@@ -35,7 +35,17 @@ class RedirectIfAuthenticated {
 	{
 		if ($this->auth->check())
 		{
-			return new RedirectResponse(url('/'));
+			if($request->user()->isCompany){
+				return redirect('client/manage');
+			}
+
+			if($request->user()->isExpertise){
+				return redirect('expertise');
+			}
+
+			if($request->user()->isStudent){
+				return redirect('profile');
+			}
 		}
 
 		return $next($request);

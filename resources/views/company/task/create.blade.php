@@ -58,14 +58,14 @@
 										<div class="col-sm-10">
 											<select type="text" multiple = "multiple" id = "skill_list" class="form-control" name="skill" placeholder="select the skills">
 											<option disabled = "disabled" value = "FrontEnd">Frontend development</option>
-												<option value = "javascript">javascript</option>
-												<option value = "Node.js">Node.js</option>
-												<option value = "Python">Python</option>
-												<option value = "Css">Css</option>
+												<option value = "5">javascript</option>
+												<option value = "3">Html</option>
+												<option value = "6">Python</option>
+												<option value = "7">PHP</option>
 											<option disabled = "disabled" value = "FrontEnd">Frontend development</option>
-												<option value = "Mysql">Mysql</option>
-												<option value = "GoogleAnalytics">Analytics</option>
-												<option value = "MongoDB">MongoDB</option>
+												<option value = "3">Mysql</option>
+												<option value = "4">C</option>
+												<option value = "1">Java</option>
 											</select>
 										</div>
 									</div>

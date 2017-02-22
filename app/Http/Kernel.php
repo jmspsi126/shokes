@@ -32,6 +32,8 @@ class Kernel extends HttpKernel {
 		'company'=> 'App\Http\Middleware\company',
 		'student' => 'App\Http\Middleware\Student',
 		'expertise' => 'App\Http\Middleware\Expertise',
+		'wiki' => 'App\Http\Middleware\WikiMiddleware',
+		'post' => 'App\Http\Middleware\PostMiddleware'
 	];
 
 }

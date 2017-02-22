@@ -16,21 +16,25 @@ class CreateProjectTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('type');
-			$table->string('status');
+			$table->string('name');
+
+			$table->string('status')->default('open');
             $table->text('description');
             $table->text('skills');
 			$table->text('environment');
+			$table->integer('budget');
 			$table->timestamps();
 
 			$table->dateTime('start_time');
 			$table->dateTime('end_time');
 
-
-			$table->String("difficulty");
-
 			$table->Integer('company_id')->unsigned();
+			$table->foreign('company_id')->references('id')->on('company');
 
 		});
+
+
+
 
 
 

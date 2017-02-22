@@ -1,0 +1,96 @@
+ 
+	<?php $__env->startSection('body'); ?>
+	<div class="container-fluid menu-hidden">
+		<?php echo $__env->make('company.sidebar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+		<div id="content">
+			<?php echo $__env->make('company.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+			<div class="innerLR">
+				<div class="separator"></div>
+				<div class="lead center innerTB">
+					<h2>Applications</h2>
+				</div>
+				<div class="heading-buttons innerLR box">
+					<h4 class="margin-none innerTB pull-left">Applicants</h4>
+
+					<div class="clearfix"></div>
+				</div>
+				<div class="row">
+					<?php if(is_array($userProjects) || is_object($userProjects)): ?>
+
+						<?php foreach($userProjects as $user): ?>
+
+							<div class="col-md-4 detail" >
+							<div class="innerAll">
+								<div class="widget widget-body-gray margin-none">	
+									<div class="widget-body ">
+										<div class="innerL">
+											<div class="separator bottom"></div>
+											<div class="glyphicons glyphicon-large group">
+												<i></i>
+												<h4><?php echo e($user->user->name); ?></h4>
+												<h5><?php echo e($user->user->email); ?></h5>
+												<h5><?php echo e(App\userProject::where('student_id',$user->id)->where('project_id',$project->id)->get()->last()->status == "true" ? 'Not Allowed' : 'Allowed'); ?></h5>
+												
+												<div class="row">
+													<form role="form" action="<?php echo URL::route('company.question.store'); ?>" method="POST" >
+														<input type="hidden" name="project_id" value="<?php echo e($project->id); ?>"/>
+														<input type="hidden" name="user_id" value="<?php echo e($user->id); ?>"/>
+														<input type="hidden" name="_token" id="_token" value="<?php echo e(csrf_token()); ?>">
+														
+														<p id="desc">
+														--------------------------------------------------------------------------------<br></br>
+														<?php if($project->questions !== null): ?>
+															<?php foreach($project->questions as $key => $questionItem): ?>
+																<b>Question<?php echo e($key + 1); ?>:</b>&nbsp;&nbsp;<?php echo e($questionItem->question); ?><br></br>
+																<b>Answer<?php echo e($key+ 1); ?>:</b>&nbsp;&nbsp;<?php echo e($questionItem->answers()->where('user_id', $user->id)->firstOrFail()->answer); ?><br></br>
+															<?php endforeach; ?>
+														<?php endif; ?>
+															<button class="btn btn-primary">
+																<i class="fa fa-fw fa-check-square-o"></i> I agree
+															</button>
+														</p>
+														
+													</form>
+												</div>
+												
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<?php endforeach; ?>
+
+					<?php else: ?>
+					<h3>No user applied to this task<h3>
+					<?php endif; ?>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	<?php $__env->stopSection(); ?> 
+	<?php $__env->startSection('scripts'); ?>
+		<script type="text/javascript">
+            function deleteTask(obj) {
+                bootbox.confirm('Are you sure?', function(result) {
+                    if (result) {
+                        location.href=$(obj).attr('data-url');
+                    }
+                });    
+            }
+
+			$(document).ready(function(){
+                
+            	$('p').hide();
+                
+                $('.detail').click(function(){
+                    $(this).toggleClass("expand");
+                    $(this).find("#desc").toggle();
+                });
+                
+            });
+            
+        </script>
+
+<?php echo $__env->make('company.main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

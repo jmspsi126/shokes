@@ -14,4 +14,8 @@ class submission extends Model
         return $this->belongsTo('App\project');
     }
 
+    public function task(){
+        return $this->belongsTo('App\task');
+    }
+
 }

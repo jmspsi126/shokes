@@ -1,0 +1,24 @@
+<?php $__env->startSection('contentPane'); ?>
+<div class="container-fluid">
+	<div class="col-md-12">
+		<h1>SimpleWiki
+			<span class="pull-right">
+				<a class="btn btn-success btn-xs" href="/wiki/create"><i class="glyphicon glyphicon-plus"></i></a>
+			</span>
+		</h1>
+		<hr>
+		Welcome to this very simple wiki! Here's a list of all our main pages or categories.
+		<hr>
+		<ul>
+			<?php foreach($pages as $page): ?>
+			<li><a href="/wiki/<?php echo e($page->id); ?>"><?php echo e($page->title); ?></a></li>
+			<?php endforeach; ?>
+		</ul>
+	</div>
+</div>
+<div class="container-fluid footer">
+	<div class="col-sm-3 col-md-2"></div>
+	<div class="pull-right">Created by Chris Thomas for CSCI 215.</div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

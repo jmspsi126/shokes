@@ -1,0 +1,234 @@
+<?php $__env->startSection('addheader'); ?>
+
+        <!-- Google Font -->
+        <link href='https://fonts.googleapis.com/css?family=Dosis:400,300' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="css/profile/font-awesome.css">
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/profile/fileinput.css">
+        <link rel="stylesheet" href="css/profile/style.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+ <div class="overview_content">
+            <div class="container">
+                <div class="row">
+				<?php if($task->isCommited==1): ?>
+						 <h2>Project is Commited, Waiting for Approval...</h2>
+					<?php endif; ?>
+                    <div class="col-md-3 no_padding text-center">
+                        <div class="f1_container">
+                            <div class="shadow f1_card">
+                                <div class="front face">
+                                    <img src="img/overview.png" alt="">
+                                    <h2>Overview</h2>
+                                    <a href=""></a>   
+                                </div>
+                                <div class="back face center">
+                                    <h2>Overview</h2>
+                                    <ul>
+                                        <li><img src="img/user.png" alt="">User Level: Apprentice</li>
+                                        <li><img src="img/trust.png" alt="">Trust Level: \n</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>                        
+                    </div>
+
+                    <div class="col-md-3 no_padding text-center">
+                        <div class="f1_container">
+                            <div class="shadow f1_card">
+                                <div class="front face">
+                                    <img src="img/task.png" alt="">
+                                    <h2>Mini Task</h2>
+                                    <?php if($task->isCommited==1): ?>
+										 <div id="">
+                                        <p>Waiting for Approval...</p>
+                                    </div> 
+								   <?php else: ?>
+									<div id="clockdiv">
+                                        <p><span class="days"></span> Days <span class="hours"></span>:<span class="minutes"></span> Hours <br>Remaining</p>
+                                    </div>  
+									<?php endif; ?>
+                                    <a href=""></a>  
+                                </div>
+                                <div class="back face center">
+                                    <h2>Mini Task</h2>
+                                    <ul>
+                                        <li><img src="img/tree.png" alt="">Tree View</li>
+                                        <li><img src="img/doller.png" alt="">$200.00</li>
+                                    </ul>
+                                    <a  href = <?php echo e(URL('/project/task/'.$task->id)); ?> class="btn btn_wid" href="">View Task</a>  
+                                </div>
+                            </div>
+                        </div>                        
+                    </div>
+
+
+                    <div class="col-md-3 no_padding text-center">
+                        <div class="f1_container">
+                            <div class="shadow f1_card">
+                                <div class="front face">
+                                    <img src="img/environment.png" alt="">
+                                    <h2>Environment Setup</h2>
+                                    <a href=""></a>   
+                                </div>
+                                <div class="back face center">
+                                    <h2>Environment Setup</h2>
+                                    <ul>
+                                        <li><img src="img/desktop.png" alt="">Remote Desktop</li>
+                                    </ul>
+                                    <a class="btn btn_nor" href="">Not Open</a>       
+                                </div>
+                            </div>
+                        </div>                        
+                    </div>
+
+                    <div class="col-md-3 no_padding text-center">
+                        <div class="f1_container">
+                            <div class="shadow f1_card">
+                                <div class="front face">
+                                    <img src="img/project.png" alt="">
+                                    <h2>Commit Project</h2> 
+                                </div>
+								
+                                <div class="back face center">
+								   <?php if($task->isCommited==1): ?>
+										 <h2>Waiting for Approval...</h2>
+										 
+										  <button class="btn btn_wid" type="submit" disabled>Submit</button> 
+								   <?php else: ?>
+									<?php echo Form::open(array('url'=>'/project/update','method'=>'POST', 'files'=>true)); ?>
+
+
+                                    <h2>Upload File</h2>
+                                    <div class="file_upload">
+                                        <div class="form-group notactive">
+
+                                            <?php echo Form::label(''); ?>
+
+                                            <?php echo Form::file('zip',array('id'=>'file-3')); ?>
+
+<!--                                             <input id="file-3" type="file" multiple=true>
+ -->                                        </div>                            
+                                    </div>
+
+                                   
+
+                                    <button class="btn btn_wid" type="submit">Submit</button> 
+                                    <?php echo Form::close(); ?>
+
+
+									
+                                </div>
+								<?php endif; ?>
+                            </div>
+                        </div>                        
+                    </div>
+                </div>
+            </div>            
+        </div>
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"></script>
+
+
+        <script src="js/fileinput.js"></script>
+        <script>
+
+
+            $('.f1_container').click(function() {
+                $(this).toggleClass('active');
+            });  
+            $('#file-3').click(function(){
+                $('.f1_container').addClass('active');
+            });
+        </script>
+        <script>
+            $("#file-3").fileinput({
+                showUpload: false,
+                showCaption: false,
+                browseClass: "btn btn_upload",
+                fileType: "any",
+            });            
+        </script>     
+
+        <script>
+            function getTimeRemaining(endtime) {
+			
+            var t = Date.parse(endtime) - Date.parse(new Date());
+            var seconds = Math.floor((t / 1000) % 60);
+            var minutes = Math.floor((t / 1000 / 60) % 60);
+            var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+            var days = Math.floor(t / (1000 * 60 * 60 * 24));
+            return {
+                'total': t,
+                'days': days,
+                'hours': hours,
+                'minutes': minutes,
+                'seconds': seconds
+            };
+        }
+
+        function initializeClock(id, endtime) {
+		
+            var clock = document.getElementById(id);
+            var daysSpan = clock.querySelector('.days');
+            var hoursSpan = clock.querySelector('.hours');
+            var minutesSpan = clock.querySelector('.minutes');
+//            var secondsSpan = clock.querySelector('.seconds');
+
+            function updateClock() {
+                var t = getTimeRemaining(endtime);
+
+                daysSpan.innerHTML = t.days;
+                hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+                minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+//                secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+                if (t.total <= 0) {
+                    clearInterval(timeinterval);
+                }
+            }
+
+            updateClock();
+            var timeinterval = setInterval(updateClock, 1000);
+        }
+		
+        var deadline = new Date(Date.parse(new Date(<?php echo json_encode($task->created_at->format('M,d Y,h:i:s')); ?>)) + 9 * 24 * 60 * 60 * 1000);
+        console.log(new Date());
+        initializeClock('clockdiv', deadline);
+		
+    </script> 
+	<script type="text/javascript">
+                $(document).ready(
+        function(){
+            $('button').attr('disabled',true);
+            $('input:file').change(
+                function(){
+                    if ($(this).val()){
+                        $('button').removeAttr('disabled'); 
+                    }
+                    else {
+                        $('button').attr('disabled',true);
+                    }
+                });
+        });
+    </script>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('Profile.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

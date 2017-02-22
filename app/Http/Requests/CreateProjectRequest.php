@@ -25,8 +25,11 @@ class CreateProjectRequest extends Request
     {
         return
             ['name' => 'required',
-                  'description' => 'required',
-                  'skills' => 'required',
+                'description' => 'required',
+                'type' => 'required',
+                'Endtime' =>'required',
+                'budget' => 'required',
+                'tags' => 'required',
             ];
     }
 }

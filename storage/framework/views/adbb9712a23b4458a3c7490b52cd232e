@@ -1,0 +1,211 @@
+<?php $__env->startSection('content'); ?>
+
+
+
+
+<?php /*<link href="/css/progress/bootstrap.min.css" rel="stylesheet">*/ ?>
+<link href="/css/progress/font-awesome.min.css" rel="stylesheet">
+<link href="/css/progress/lightbox.css" rel="stylesheet">
+<link href="/css/progress/main.css" rel="stylesheet">
+<link href="/css/progress/responsive.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+<script src="js/projectView/html5shiv.js"></script>
+<script src="js/projectViewrespond.min.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="img/ico/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/ico/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/ico/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="img/ico/apple-touch-icon-57-precomposed.png">
+
+<style>
+    body{
+        /*background-color:#f7f7f7;*/
+    }
+
+</style>
+
+<?php /*<section style = "background:url(/img/progressbg.png);height:400px;background-position:50%;background-size: cover;">*/ ?>
+    <?php /*<div class="vertical-center" style="width: 50%;">*/ ?>
+        <?php /*<div class="container" style = "text-align: center;padding-top:7%">*/ ?>
+            <?php /*<div class="row">*/ ?>
+                <?php /*<div class="action">*/ ?>
+                    <?php /*<div class="col-sm-12">*/ ?>
+                        <?php /*<h1 style = "font-size:40px;text-transform: uppercase;color: #333;letter-spacing: 10px;">PROGRESS</h1>*/ ?>
+                        <?php /*<hr style = "width:30%;border:1px solid #B7B7B7">*/ ?>
+                        <?php /*<h3>TRACK YOUR PROJECT</h3>*/ ?>
+                    <?php /*</div>*/ ?>
+                <?php /*</div>*/ ?>
+            <?php /*</div>*/ ?>
+        <?php /*</div>*/ ?>
+    <?php /*</div>*/ ?>
+<?php /*</section>*/ ?>
+
+<section>
+    <div class="vertical-center" style = "display:table;text-align: center;margin-top:15%">
+        <div class="container">
+            <div class="row">
+                <div class="action " >
+                    <div class="col-sm-12">
+                        <h1 class="title" style = "font-weight:300;"><?php echo e($project->name); ?></h1>
+                        <img style = "margin-top:2%" src=<?php echo e(asset("img/shape.png")); ?> alt="">
+                        <h2>Timeline</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/#page-breadcrumb-->
+
+<section id="blog" class="padding-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="timeline-blog overflow padding-top">
+
+                <div class="timeline-date text-center">
+                    <a href="#" class="btn btn-common uppercase"><?php echo e(date('F d, Y',strtotime($project->created_at))); ?></a>
+                </div>
+                <?php foreach($project->tasks as $task): ?>
+                <div class="timeline-divider overflow padding-bottom">
+                    <div class="col-sm-6 padding-right arrow-right wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="300ms">
+                        <div class="single-blog timeline">
+                            <div class="single-blog-wrapper">
+                                <div class="post-thumb">
+                                    <img src="<?php echo e(asset("img/cove.png")); ?>" class="img-responsive" alt="">
+                                    <div class="post-overlay">
+                                        <span class="uppercase"><a href="#">14 <br><small>Feb</small></a></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post-content overflow">
+                                <span class="post-date pull-left">February 11, 2014</span>
+                                <h2 class="post-title bold" style = "margin-top:10%"><a href="blogdetails.html">Advanced business cards design</a></h2>
+                                <h3 class="post-author"><a href="#">Posted by micron News</a></h3>
+                                <p style = "font-family:Montserrat hairline">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber [...]</p>
+                                <a href="#" class="read-more">View More</a>
+                                <div class="post-bottom overflow">
+                                    <span class="comments-number pull-right"><a href="#">$300</a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 padding-left padding-top arrow-left wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="300ms">
+                        <div class="single-blog timeline">
+                            <div class="single-blog-wrapper">
+                                <div class="post-thumb">
+                                    <img src="<?php echo e(asset("img/w1.png")); ?>" class="img-responsive" alt="">
+                                    <div class="post-overlay">
+                                        <span class="uppercase"><a href="#">14 <br><small>Feb</small></a></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post-content overflow">
+                                <span class="post-date pull-left">February 11, 2014</span>
+                                <h2 class="post-title bold" style = "margin-top:10%"><a href="blogdetails.html">Advanced business cards design</a></h2>
+                                <p style = "font-family:Montserrat hairline">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber [...]</p>
+                                <a href="#" class="read-more">View More</a>
+                                <div class="post-bottom overflow">
+                                    <span class="comments-number pull-right"><a href="#">$300</a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+                <?php endforeach; ?>
+            </div>
+            <div class="timeline-blog overflow">
+                <div class="timeline-date text-center">
+                    <a href="" class="btn btn-common uppercase"><?php echo e(date('F d, Y',strtotime($project->updated_at))); ?></a>
+                </div>
+                <div class="timeline-divider overflow padding-bottom">
+                    <div class="col-sm-6 padding-right arrow-right wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="300ms">
+                        <div class="single-blog timeline" style = "padding:20px">
+                            <div class="single-blog-wrapper">
+                                <div class="post-thumb">
+                                    <div class="post-overlay">
+                                        <span class="uppercase"><a href="#">14 <br><small>Feb</small></a></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post- content overflow">
+                                <span class="post-date pull-left">February 11, 2014</span>
+                                <h2 class="post-title bold" style = "margin-top:10%"><a href="blogdetails.html">Advanced business cards design</a></h2>                                <h3 class="post-author"><a href="#">Posted by micron News</a></h3>
+                                <p style = "font-family:Montserrat hairline">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber [...]</p>
+                                <a href="#" class="read-more">View More</a>
+                                <div class="post-bottom overflow">
+                                    <span class="comments-number pull-right"><a href="#">$300</a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 padding-left padding-top arrow-left wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="300ms">
+                        <div class="single-blog timeline">
+                            <div class="single-blog-wrapper">
+                                <div class="post-thumb">
+                                    <div class="post-overlay">
+                                        <span class="uppercase"><a href="#">14 <br><small>Feb</small></a></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post-content overflow">
+                                <span class="post-date pull-left">February 11, 2014</span>
+                                <h2 class="post-title bold" style = "margin-top:10%"><a href="blogdetails.html">Advanced business cards design</a></h2>                                <h3 class="post-author"><a href="#">Posted by micron News</a></h3>
+                                <p style = "font-family:Montserrat hairline">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber [...]</p>
+                                <a href="#" class="read-more">View More</a>
+                                <div class="post-bottom overflow">
+                                    <span class="comments-number pull-right"><a href="#">$300</a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-date text-center">
+                    <a href="#" class="btn btn-common">Complete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/#blog-->
+
+
+<!--/#footer-->
+
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/lightbox.min.js"></script>
+<script type="text/javascript" src="js/wow.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+
+
+<script>
+    $(function(){
+        var $ppc = $('.progress-pie-chart'),
+                percent = parseInt($ppc.data('percent')),
+                deg = 360*percent/100;
+        if (percent > 50) {
+            $ppc.addClass('gt-50');
+        }
+        $('.ppc-progress-fill').css('transform','rotate('+ deg +'deg)');
+        $('.ppc-percents span').html(percent+'%');
+    });
+</script>
+
+
+<script type="text/javascript" src="/js/projectView/jquery.js"></script>
+<script type="text/javascript" src="/js/projectView/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/projectView/lightbox.min.js"></script>
+<script type="text/javascript" src="/js/projectView/wow.min.js"></script>
+<script type="text/javascript" src="/js/projectView/main.js"></script>
+
+
+</div >
+
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('client.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -30,7 +30,7 @@
 
 
 	<div class="container-fluid menu-hidden">
-			@include('company.sidebar')
+			@include('company.sidebar',[$projectId])
 				<div id="content">
 					@include('company.header')
 

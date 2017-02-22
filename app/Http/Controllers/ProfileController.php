@@ -4,7 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Profile;
 use App\task;
-use App\Resume;
+use App\resume;
 use App\UserAnalysis;
 use App\SkillUser;
 use Request, Input, Response;
@@ -20,6 +20,7 @@ class ProfileController extends Controller
 
     public function __construct(){
 
+
         $this->middleware('auth');
         $this->middleware('student');
     }
@@ -27,31 +28,38 @@ class ProfileController extends Controller
 
     public function resume()
     {
-        return view('profile.paper');
+        return view('Profile.paper');
     }
 
     public function index()
     {
-        /*$this->middleware('auth');*/
+		
+	   /*$this->middleware('auth');*/
 
-        $user = \Auth::user();
-       	
-        
+        $user = \Auth::user()->student;
+
         $resume = Resume::where('studentID','=',$user->id)->first();
 
+        if($user->projects and !$user->tasks()->first()){
+            $project = $user->projects->first();
+            task::create(['name'=> 'User Guideline', 'description' => 'Please review the project wiki and wait the task being updated','estimateTime'=>1,'sequence'=>'1','project_id'=>$project->id] );
+            $currentTask = $project->tasks->first();
+            $prevTask = [];
+            $nextTask =[];
+            return view('Profile.Profile',compact('user','prevTask','nextTask','currentTask'));
+        }
 
         if (!$resume or !$user->tasks()->first()) {
-        	$resume = new Resume;
-        	$resume->studentID = $user->id;
-        	$resume->about = 'Please input the text about you.';
-            $resume->evaluation = 'Not evaluated';
-        	$resume->save();
-
-            return view('Profile.empty');
+//        	$resume = new Resume;
+//        	$resume->studentID = $user->id;
+//        	$resume->about = 'Please input the text about you.';
+//            $resume->evaluation = 'Not evaluated';
+//        	$resume->save();
+            return view('Profile.empty',compact('user'));
         }
 
 
-        $achievements = $user->ranks()->orderBy('overall_point','DESC')->get();
+
 
 
         $currentTask = $user->tasks()->orderBy('id', 'DESC')->get()->first();
@@ -74,7 +82,6 @@ class ProfileController extends Controller
 		fwrite($file, $output);
 		fclose($file);
         
-		$skillUsers = SkillUser::where('user_id', $user->id)->get();
         return view('Profile.Profile',compact('user','resume','achievements','prevTask','nextTask','currentTask','skillUsers'));
 
 
@@ -100,7 +107,7 @@ class ProfileController extends Controller
     	$resume = Resume::where('studentID', $user->id)->firstOrFail();
     	
     	if ($resume) {
-	    	$resume->about = Input::get('about');
+	    	$resume->about = Input::get('about');;
 	    	$resume->save();
     	}
     	

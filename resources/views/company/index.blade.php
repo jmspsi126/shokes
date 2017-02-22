@@ -1,8 +1,8 @@
 @extends('main')
 	@section('body')
-		<div class="container-fluid menu-hidden main">
+		<div class="container-fluid menu-hidden main" style = "height:100%">
 			@include('admin.sidebar')
-			<div id="content">
+			<div id="content" style = "height:100%">
 				@include('header')
 
 			</div>

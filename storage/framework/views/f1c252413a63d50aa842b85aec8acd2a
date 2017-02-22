@@ -1,0 +1,8 @@
+Hello <?php echo e($name); ?>,
+
+Here is the notification from Shokse system for you.
+
+<pre><?php echo html_entity_decode($body); ?></pre>
+
+Thank you,
+Administrator

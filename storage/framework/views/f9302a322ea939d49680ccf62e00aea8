@@ -1,0 +1,46 @@
+<?php $__env->startSection('content'); ?>
+	
+	<link href="<?php echo e(asset('css/bootstrap-flatly.css')); ?>" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src ="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src=<?php echo e(asset('js/bootbox.min.js')); ?>></script>
+	
+	<?php if($user->projects): ?>
+
+		<div class="row" style="margin-top:10%">
+			<?php foreach($user->projects as $project): ?>
+
+			<?php if(App\userProject::where('student_id',$user->id)->where('project_id',$project->id)->get()->last()->status): ?>
+					<div class="col-sm-12">
+						<div class="col-sm-8 col-sm-offset-2">
+							<div class="alert alert-success text-center"><b><?php echo e($project->name); ?></b> is allowed. Click <a data-id="<?php echo $project->project_id; ?>" onclick="startProject(this);" style="cursor: pointer;">here</a> to start project.</div>
+						</div>
+					</div>
+				<?php else: ?>
+					<div class="col-sm-12">
+						<div class="col-sm-8 col-sm-offset-2">
+							<div class="alert alert-danger text-center"><?php echo e($project->name); ?> is not allowed yet.</div>
+						</div>
+					</div>
+				<?php endif; ?>
+			<?php endforeach; ?>
+		</div>
+	<?php endif; ?>
+	<div class="row">
+		<div class="col-md-12" style = "text-align:center" >
+
+			<img src="<?php echo e(asset('img/lock.png')); ?>" style = "opacity:0.6;margin-top:2%">
+			<h3> Start working on projects now!</h3>
+				<a href = "<?php echo e(url('/project')); ?>">
+			<button class="btn btn-default btn-lg" style = "margin-top:1%">Look for projects</button>
+			</a>
+
+		</div>
+	</div>
+
+
+
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('Profile.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

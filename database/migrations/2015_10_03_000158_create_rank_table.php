@@ -52,7 +52,7 @@ class CreateRankTable extends Migration {
 	public function down()
 	{
 		Schema::drop('rank');
-		Schema::drop('rank_user');
+		Schema::drop('rank_company');
 	}
 
 }

@@ -11,12 +11,11 @@
 @endsection
 
 @section('content')
+
 	<div class="row">
 
 			@include('Profile.partial')
-	@if($user->ranks()->first())
 
-	@endif
 
 	<script type="text/javascript">
 
@@ -66,12 +65,12 @@
 			var rect = [];
 			var rectCount = 0;
 	
-			@foreach ($skillUsers as $key=>$item)
-				atext[{{ $key }}] = '{{ $item->skill->name }}';
-				aData[{{ $key }}] = '{{ $item->hour }}';
-				aLevel[{{ $key }}] = '{{ $item->level }}';
-			@endforeach
-			
+			{{--@foreach ($skillUsers as $key=>$item)--}}
+				{{--atext[{{ $key }}] = '{{ $item->skill->name }}';--}}
+				{{--aData[{{ $key }}] = '{{ $item->hour }}';--}}
+				{{--aLevel[{{ $key }}] = '{{ $item->level }}';--}}
+			{{--@endforeach--}}
+			{{----}}
 			var space = 20;
 			var topSpace = canvas.height*0.3;
 			var iMax=Math.max.apply(null,aData)

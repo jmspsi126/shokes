@@ -9,10 +9,21 @@
 
 	<!--Css-->
 
-	<link href="{{ asset('css/bootstrap-flatly.css') }}" rel="stylesheet">
 	<link href="{{ asset('/css/welcome1.css') }}" rel="stylesheet">
 	<link href = "{{asset('css/chart/chart.css')}}" rel="stylesheet">
 
+
+	<link href="/css/post/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/post/font-awesome.min.css" rel="stylesheet">
+	<link href="/css/post/animate.min.css" rel="stylesheet">
+	<link href="/css/post/lightbox.css" rel="stylesheet">
+	<link href="/css/post/main.css" rel="stylesheet">
+	<link href="/css/post/responsive.css" rel="stylesheet">
+
+	<!--[if lt IE 9]>
+	<script src="js/html5shiv.js"></script>
+	<script src="js/repsond.min.js"></script>
+	<![endif]-->
 
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
@@ -38,235 +49,135 @@
 <body>
 
 	<div class = "page">
+		<header id="header">
 
-		<div class = "cover">
+		<div class="navbar navbar-inverse" role="banner">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
 
-			<canvas id="myCanvas" width = "1200px" height="700px"></canvas>
+					<a class="navbar-brand" href="#">
+						<h1><img src="{{url('img/shokse.jpg')}}" alt="logo" style = "height:120px;opacity:0.5"></h1>
+					</a>
 
-			<script type = "text/javascript">
-				$(document).ready(function(){
-
-					var canvas, ctx, w, h;
-
-					var h = window.innerHeight;
-					var w = window.innerWidth;
-
-					var canvas = document.getElementById('myCanvas');
-
-					ctx = canvas.getContext('2d');
-
-					function paintCanvas(){
-						ctx.fillStyle = "rgba(0,0,0,1)";
-						ctx.fillRect(0,0,w,h);
-					}
-
-
-					function particle(r,off,c){
-						this.x = Math.random()*w;
-						this.y = Math.random()*h;
-						this.r = r;
-						this.offset = Math.random()*50+off;
-						this.color = "rgba(255,255,255,"+c+")"
-						this.draw = function(){
-							ctx.fillStyle = this.color;
-							ctx.beginPath();
-							ctx.arc(this.x,this.y,this.r,Math.PI*2,false);
-							ctx.fill();
-						}
-
-					}
-
-					var layer_1 = [],
-							layer_2 = [],
-							layer_3 = [];
-
-					var layer_1_num = 40;
-					var layer_2_num = 40;
-					var layer_3_num = 100;
-
-
-					for(i=0;i<layer_1_num;i++){
-						layer_1.push(new particle(4,20,0));
-
-					}
-					for(i=0;i<layer_2_num;i++){
-						layer_2.push(new particle(2.5,40,0));
-					}
-					for(i=0;i<layer_3_num;i++){
-						layer_3.push(new particle(1,60,0));
-					}
-
-					function draw(){
-						for(i=0;i<layer_1.length;i++){
-							var p = layer_1[i];
-							p.draw();
-							update(p);
-							checkBounds(p);
-							for(var j=i+1;j<layer_3.length;j++){
-								p2 = layer_3[j];
-								distance(p,p2,w*1.5);
-							}
-
-						}
-						for(i=0;i<layer_2.length;i++){
-							var p = layer_2[i];
-							p.draw();
-							update(p);
-							checkBounds(p);
-							for(var j=i+1;j<layer_3.length;j++){
-								p2 = layer_3[j];
-								distance(p,p2);
-							}
-						}
-						for(i=0;i<layer_3.length;i++){
-							var p = layer_3[i];
-							p.draw();
-							update(p);
-							checkBounds(p);
-							for(var j=i+1;j<layer_3.length;j++){
-								p2 = layer_3[j];
-								distance(p,p2);
-							}
-						}
-					}
-					function update(p){
-						p.x = p.x - mouse.x/p.offset;
-						p.y = p.y - mouse.y/p.offset;
-					}
-					function checkBounds(p){
-						if(p.x > w  ){
-							p.x =0;
-						}
-						else if(p.x < 0){
-							p.x =w;
-						}
-						if(p.y > h){
-							p.y =0;
-						}
-						else if(p.y < 0){
-							p.y = h;
-						}
-					}
-
-					var minDist = w*0.7;
-
-					function distance(p1,p2){
-						var dist;
-						var dx = p1.x - p2.x;
-						var dy = p1.y - p2.y;
-						dist = Math.sqrt(dx*dx + dy*dy);
-
-						if (dist <= minDist){
-							ctx.beginPath();
-							ctx.strokeStyle = "rgba(255,255,255,"+ (0.2-dist/minDist) +")";
-							ctx.moveTo(p1.x, p1.y);
-							ctx.lineTo(p2.x, p2.y);
-							ctx.stroke();
-							ctx.closePath();
-						}
-					}
-
-					var mouse ={
-						x:0,
-						y:0
-					}
-
-					document.addEventListener('mousemove', function(e){
-						mouse.x = e.clientX  -w/2|| e.pageX -w/2;
-						mouse.y = e.clientY -h/2|| e.pageY -h/2;
-					}, false);
-
-					function animate(){
-						paintCanvas();
-						draw();
-						requestAnimationFrame(animate);
-					}
-					// setInterval(function(){
-					// 	paintCanvas();
-					// 	draw();
-					// },30);
-					animate();
-				});
-
-			</script>
-
-			<div class = "container intro">
-
-
-					<div class = "navbar_container">
-
-
-						<nav class="navbar  space">
-							<div class="container-fluid">
-
-								<div class="navbar-header">
-									<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-										<a class="navbar-brand logo" href="#" style = "height:40px"></a> Menu
-									</button>
-									<a class="navbar-brand" href="#"> </a>
-								</div>
-
-
-								<div class="collapse navbar-collapse" id="myNavbar">
-									<a class="navbar-brand logo" href="#" style = "height:40px"></a>
-									<ul class="nav navbar-nav">
-										<li role="presentation" class="active center" style = "margin-left:20px"><a href="#">HOW WE WORK</a></li>
-										{{--<li role="presentation" class="center"><a href="#">HIRE</a></li>--}}
-										{{--<li role="presentation" class="center"><a href="#"></a></li>--}}
-										<li role="presentation" class="center"><a href="#">TALENT DEVELOPMENT</a></li>
-
-
-										<li role="presentation" class= "companyLogin"><a href={{url('/lazy')}} class = "box">POST PROJECT</a></li>
-										<li class = "sep">
-										<li role="presentation" class = "studentLogin"><a href={{url('/login')}} class = "box">BECOME TOP TALENT</a></li>
-
-									</ul>
-								</div>
-					</div>
-					</nav>
 				</div>
-				<div class = "row">
-					<div class = "col-xs-12 text"style = "margin-top:10%">
-						<h1 class ="h1-black">
-							Explore your passion by working on it
-						</h1>
-						<h3 class = "h3-black" style = "margin-bottom:4%">
-							Develop your potential by your passion and our techology
-						</h3>
-					</div>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li ><a href={{url('/login')}}>Login</a></li>
+
+
+						<li><a href={{url('auth/register')}}>SIGN UP</a></li>
+					</ul>
 				</div>
-				<div class="row center col-lg-8 col-lg-offset-4 text-center">
-
-					<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}" id="loginform">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-						<div class = "col-xs-8 col-xs-offset-2 col-md-8 col-md-offset-2 col-lg-4 col-lg-offset-0  " style=" ">
-							<input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email"
-								   autofocus=""
-								   style="height:50px; background-color: transparent;">
-						</div>
-
-
-						<div class="col-xs-8 col-xs-offset-2 col-md-8 col-md-offset-2 col-lg-1 col-lg-offset-0" style="text-align: center; ">
-							<a href={{url('auth/register/student')}} class="btn btt btn-primary btn-block" style="min-height: 50px;min-width:100px; background-color: transparent;float:left; font-family:'Roboto'">Sign Up</></a>
-						</div>
-
-					</form>
-
-					<div class="clear"></div>
-				</div>
-				<div class="clear"></div>
-
-
-
 
 			</div>
+		</div>
+		</header>
+		<!--/#header-->
+
+		<section id="home-slider">
+			<div class="container" style ="text-align: center">
+				<div class="main-slider">
+					<div class="slide-text" style = "width:100%">
+						<h1 style = "font-size:40px">Program on your spare time, get paid, get experience</h1>
+						<h2>Tap into the crowdsourced community to develop your software.</h2>
+						<a href={{url('auth/register')}} class="btn btn-common">SIGN UP</a>
+					</div>
+					{{--<img src="img/vector_251_03-512.png" class="img-responsive slider-house" alt="slider image">--}}
+					{{--<img src="img/home/slider/slide1/house.png" class="img-responsive slider-house" alt="slider image">--}}
+					{{--<img src="img/home/slider/slide1/circle1.png" class="slider-circle1" alt="slider image">--}}
+					{{--<img src="img/home/slider/slide1/circle2.png" class="slider-circle2" alt="slider image">--}}
+					{{--<img src="img/home/slider/slide1/cloud1.png" class="slider-cloud1" alt="slider image">--}}
+					{{--<img src="img/home/slider/slide1/cloud2.png" class="slider-cloud2" alt="slider image">--}}
+					{{--<img src="img/home/slider/slide1/cloud3.png" class="slider-cloud3" alt="slider image">--}}
+					{{--<img src="img/home/slider/slide1/sun.png" class="slider-sun" alt="slider image">--}}
+					{{--<img src="img/home/cycle.png" class="slider-cycle" alt="">--}}
+				</div>
+			</div>
+			<div class="preloader"><i class="fa fa-sun-o fa-spin"></i></div>
+		</section>
+		<!--/#home-slider-->
+
+		{{--<div class = "cover">--}}
+
+			{{--<canvas id="myCanvas" width = "1200px" height="720px"></canvas>--}}
+
+
+			{{--<div class = "container intro">--}}
+
+
+					{{--<div class = "navbar_container">--}}
+
+
+						{{--<nav class="navbar  space">--}}
+							{{--<div class="container-fluid">--}}
+
+								{{--<div class="navbar-header">--}}
+									{{--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">--}}
+										{{--<a class="navbar-brand logo" href="#" style = "height:40px"></a> Menu--}}
+									{{--</button>--}}
+									{{--<a class="navbar-brand" href="#"> </a>--}}
+								{{--</div>--}}
+
+
+								{{--<div class="collapse navbar-collapse" id="myNavbar">--}}
+									{{--<a class="navbar-brand logo" href="#" style = "height:40px"></a>--}}
+									{{--<ul class="nav navbar-nav">--}}
+										{{--<li role="presentation" class= "companyLogin box"><a href={{url('/login')}} >Login</a></li>--}}
+										{{--<li class = "sep">--}}
+										{{--<li role="presentation " class = "studentLogin box"><a href={{url('/lazy')}}>POST PROJECT</a></li>--}}
+
+									{{--</ul>--}}
+								{{--</div>--}}
+						{{--</div>--}}
+					{{--</nav>--}}
+				{{--</div>--}}
+				{{--<div class = "row">--}}
+					{{--<div class = "col-xs-12 text"style = "margin-top:10%">--}}
+						{{--<h1 class ="h1-black">--}}
+							{{--Explore your passion by working on it--}}
+						{{--</h1>--}}
+						{{--<h3 class = "h3-black" style = "margin-bottom:4%">--}}
+							{{--Develop your potential by your passion and our techology--}}
+						{{--</h3>--}}
+					{{--</div>--}}
+				{{--</div>--}}
+				{{--<div class="row center col-lg-8 col-lg-offset-4 text-center">--}}
+
+					{{--<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}" id="loginform">--}}
+						{{--<input type="hidden" name="_token" value="{{ csrf_token() }}">--}}
+
+						{{--<div class = "col-xs-8 col-xs-offset-2 col-md-8 col-md-offset-2 col-lg-4 col-lg-offset-0  " style=" ">--}}
+							{{--<input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email"--}}
+								   {{--autofocus=""--}}
+								   {{--style="height:50px; background-color: transparent;">--}}
+						{{--</div>--}}
+
+
+						{{--<div class="col-xs-8 col-xs-offset-2 col-md-8 col-md-offset-2 col-lg-1 col-lg-offset-0" style="text-align: center; ">--}}
+							{{--<a href={{url('auth/register/student')}} class="btn btt btn-primary btn-block" style="min-height: 50px;min-width:100px; background-color: transparent;float:left; font-family:'Roboto'">Sign Up</a>--}}
+						{{--</div>--}}
+
+					{{--</form>--}}
+
+					{{--<div class="clear"></div>--}}
+				{{--</div>--}}
+				{{--<div class="clear"></div>--}}
+
+
+
+
+			{{--</div>--}}
 
 			<section class = "center content" style = "border-bottom:solid 1px #eee">
-				<h1 class ="h1-black-solid">Stop finding Job, Let Job find You!</h1>
+				<h1 class ="h1-black-solid">Let the job find you!</h1>
 				<p class = "subtitle">
-					Polish your skill by working on real project, and be ready career path
-					for you <a>Learn More About This</a>
+					Showcase your pontential to the world
 				</p>
 				<div class="container">
 					<div class = "row"  >
@@ -277,9 +188,9 @@
 
 							<div class = "col-lg-3   col-xs-12 hiden" style = "  ">
 								<img src = "img/Target.png">
-								<h3>Job Fitting</h3>
+								<h3>Job Assignment</h3>
 								<p>
-									Your will be assign the project based on your current level. With done of any project your performance will be directly calculated and send to related position.
+									Your will be assigned a project based on your current skill sets.
 								</p>
 							</div>
 
@@ -287,7 +198,7 @@
 								<img src = "img/resumes.png">
 								<h3>Resume Building</h3>
 								<p>
-									The project you worked will aquatically assembling a data-driven resume in both electric and print version.
+									The projects you complete will be apart of your portfolio for employers to see.
 								</p>
 							</div>
 
@@ -295,7 +206,7 @@
 								<img src = "img/Mentorship.png">
 								<h3>Mentorship</h3>
 								<p>
-									Experienced project manager will response to track the project process and assent you on your study! Reference letter available for your great work!
+									Obtain guidance by our seasoned software developers.
 								</p>
 							</div>
 
@@ -305,7 +216,7 @@
 					<div class="row" style = "margin-top:5%">
 						<div class = "col-lg-12" >
 
-							<div class="col-xs-8 col-lg-8 frame">
+							<div class="col-xs-8 col-xs-offset-2 frame">
 								<div class = "col-xs-10 col-xs-offset-1 col-lg-10 ">
 									<div id="drawcanvas" class="screen">&nbsp;</div>
 								</div>
@@ -325,17 +236,16 @@
 					<div style = "min-height:300px;padding-top:3%">
 
 
-						<div class = "col-xs-12 col-lg-12">
+						<div class = "col-xs-12 col-lg-12" style = "text-align:center">
 							<h1 class = "bigfont">
 								JOIN US NOW
 							</h1>
 
 							<p style = "color:grey;text-align:center">
-								Our First project will lunched on Dec 13. Become our early member and start the journal with
-								us.
+
 							</p>
 
-							<a class = "start"><h3>Click Start</h3></a>
+							<a href={{url('auth/register')}} class = "start"><h3>Click Start</h3><a/>
 
 						</div>
 					</div>
@@ -345,14 +255,17 @@
 			</section>
 			<footer>
 				<small style = "font-size: 15px;">©2015 by Shokse</small>
-				<img src = "img/wheelbarrow.png" style = "height: 40px;margin-left: 30%;">
-				<small style = "font-size: 15px;margin-left:1%">The Website is on construction</small>
+				{{--<img src = "img/wheelbarrow.png" style = "height: 40px;margin-left: 30%;">--}}
+				{{--<small style = "font-size: 15px;margin-left:1%">Shokse 2015</small>--}}
 			</footer>
 		</div>
-		<div class = "  center"  >
-			<div class="arrow-down"  ></div>
-		</div>
+
 	</div>
 	<script src="https://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/js/post/jquery.js"></script>
+	<script type="text/javascript" src="/js/post/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/js/post/lightbox.min.js"></script>
+	<script type="text/javascript" src="/js/post/wow.min.js"></script>
+	<script type="text/javascript" src="/js/post/main.js"></script>
 </body>
 </html>

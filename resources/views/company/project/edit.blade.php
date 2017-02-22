@@ -53,8 +53,8 @@
 			</div>
 		</div>
 	@stop
-	
+
 	@section('custom-scripts')
-		
+
 	@stop
 @stop

@@ -1,0 +1,237 @@
+<?php $__env->startSection('content'); ?>
+
+ 
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+
+  <style>
+    .form-control{
+      border:none;
+    }
+
+    h3{
+      font-weight:400;
+      color:gray;
+
+    }
+  </style>
+
+
+  <div class="container-fluid" style="
+    margin-top: 5%;
+">
+    <div id="content">
+
+      <?php if(count($errors) > 0): ?>
+        <div class="alert alert-danger" style = "background-color:transparent">
+          <ul>
+            <?php foreach($errors->all() as $error): ?>
+              <li><?php echo e($error); ?></li>
+            <?php endforeach; ?>
+          </ul>
+        </div>
+      <?php endif; ?>
+      <div class = "col-md-12 form-container " style="text-align: center;">
+        <div class="col-md-10 col-md-offset-1" style="font-weight: lighter;letter-spacing: 5px;">
+          <h3 style="font-weight: lighter;letter-spacing: 5px;text-transform: uppercase">Post Project</h3>
+          <img style = "margin-top:2%" src=<?php echo e(asset("/img/shape.png")); ?> alt="">
+        </div>
+        <div style = "margin-top:2%" class="col-md-6 col-md-offset-3">
+
+        <p style = "font-family:'Montserrat hairline', sans-serif">Describe your project. Please be as thorough as possible. Based upon your description, Shokse will assign you a project manager that specializes in your project</p>
+        </div>
+      </div>
+
+    <div class = "col-md-8 col-md-offset-2" style = "margin-top:3%;padding: 3%;background: #f1f1f1;">
+          <form class="form-horizontal" action="<?php echo e(URL('/client/store')); ?>" role="form" method="post">
+            <input type="hidden" name="_token" id="_token" value="<?php echo e(csrf_token()); ?>">
+
+            <div class = "col-md-5 col-md-offset-1">
+
+              <div class="form-group">
+                <div class="col-md-12">
+                    <input type="text" class="form-control input_" name="name" placeholder="PROJECT NAME" style = "box-shadow: none">
+                </div>
+              </div>
+
+
+              <div class="form-group">
+                <div class="col-md-12">
+                    <input class = "input_ form-control" type="text"  placeholder="TYPE OF WORK[Mobile,Wep,etc]" name="type">
+                </div>
+              </div>
+
+                <div class="form-group">
+                  <div class="col-md-12">
+                      <input class = "input_ form-control" type="number" name="budget" placeholder="BUDGET ($)">
+                    </div>
+                </div>
+
+              <div class="form-group">
+                <div class="col-md-10 col-md-offset-1">
+                  <h4 style = "margin-bottom:0px">Completed in</h4>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-md-12">
+                    <input class="input_ form-control" type="date" name="Endtime" placeholder="DD-MM-YYYY">
+                  </div>
+              </div>
+
+          </div>
+
+          <div  class="col-md-6">
+              <textarea  class = " form-control" name="description" placeholder="DESCRIPTION" cols="95" rows="13"></textarea>
+          </div>
+
+          <div class="col-md-10 col-md-offset-1" style = "margin-top:3%">
+           <!--      <div class="col-md-4 col-md-offset-1 extraspace" >
+                  <h4>Talent Required(Select all that apply)</h4>
+                  <div class = "row" style = "width:80%">
+                  <div class = "col-md-4" style = "margin-top:20px">
+                  <img id = "code-java" class = "skill" src = "<?php echo e(asset('img/code-java.png')); ?>" style = "height:3em;margin-left:3%;opacity:0.5;transition-duration:1s">
+                  </div>
+
+                  <div class = "col-md-4" style = "margin-top:20px">
+
+                      <img id = "code-html" class = "skill" src = "<?php echo e(asset('img/code-html.png')); ?>" style = "height:3em;margin-left:13%;opacity:0.5;transition-duration:1s">
+                  </div>
+                      <div class = "col-md-4" style = "margin-top:20px">
+
+                      <img id = "code-php"  class = "skill" src = "<?php echo e(asset('img/code-php.png')); ?>" style = "height:3em;margin-left:13%;opacity:0.5;transition-duration:1s">
+                      </div>
+                      <div class = "col-md-4" style = "margin-top:20px">
+
+                      <img id = "code-css" class = "skill" src = "<?php echo e(asset('img/code-css.png')); ?>" style = "height:3em;margin-left:13%;opacity:0.5;transition-duration:1s">
+                       </div>
+                      <div class = "col-md-4" style = "margin-top:20px">
+
+                      <img id = "sql-web" class = "skill" src = "<?php echo e(asset('img/sql-web.png')); ?>" style = "height:3em;margin-left:13%;opacity:0.5;transition-duration:1s">
+                       </div>
+                          <div class = "col-md-4" style = "margin-top:20px">
+
+                          <img id = "asp-code" class = "skill" src = "<?php echo e(asset('img/asp-code.png')); ?>" style = "height:3em;margin-left:13%;opacity:0.5;transition-duration:1s">
+                          </div>
+                 </div>
+                </div>
+
+          <div class="col-md-5 col-md-offset-1">
+              <div class = "skillpool" class="col-md-2">
+                  <h4>Selected talents</h4>
+              </div>
+          </div> -->
+            <div class="form-group">
+                <div class="col-md-7 " style = "margin-left:3.65%">
+                  <h4 style = "margin-bottom:0px">Talent Acquired</h4>
+                </div>
+            </div>
+
+
+            <div class="form-group">  
+                <div class=" col-md-10 col-md-offset-1">
+                      <select class="form-control" type="text" multiple="" name="tags[]" id = "skill_list">
+                      <optgroup label="Web">
+                          <option value = "1">PHP</option>
+                          <option value = "2">JavaScript</option>
+                          <option value = "3">HTML5</option>
+                          <option value = "4">CSS</option>
+                          <option value = "5">UI/UX</option>
+                      </optgroup>    
+
+                      <optgroup label="App">
+                          <option value = "6">Java</option>
+                          <option value = "7">Andriod development</option>
+                          <option value = "8">IOS development</option>
+                          <option value = "9">Swift</option>
+                      </optgroup>  
+                      <optgroup label="Database">
+                          <option value = "10">MongoDB</option>
+                          <option value = "11">Mysql</option>
+                          <option value = "12">Spark</option>
+                          <option value = "13">Hadoop</option>
+                      </optgroup>  
+                      <optgroup label="Machine learning">
+                          <option value = "14">Data analistics</option>
+                          <option value = "15">Data classering</option>
+                          <option value = "16">computer ration</option>
+                          <option value = "17">Data mining</option>
+                          <option value = "18">Natural launguage proccessing</option>
+                          <option value = "19">Rbotics</option>
+                      </optgroup>     
+                      </select>
+                </div>
+            </div>    
+
+
+          </div>
+
+              <div class="form-group">
+            <div class ="col-md-12" style = "margin-top:3%; text-align: center;">
+                <div class ="col-md-12" style = "margin-top:3%; text-align: center;">
+              <button type="submit" class="btn btn-primary-outline" style = "width:30%;height: 40px;font-weight: bold;color: white;background: #f73b56;">POST NOW</button>
+               </div>
+                <div class ="col-md-12" style = "margin-top:3%; text-align: center;">
+              <a href="<?php echo URL::route('task'); ?>" class="btn btn-primary-outline" style = "color:1px solid #e5e5e5;color:#f73b56">Cancel</a>
+              </div>
+            </div>
+          </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+<?php $__env->stopSection(); ?>
+
+
+<?php $__env->startSection("script"); ?>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.1-rc.1/css/select2.min.css" rel="stylesheet" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.1-rc.1/js/select2.min.js"></script>
+
+
+<style>
+.select2-container--default .select2-selection--multiple,
+.select2-container--default.select2-container--focus .select2-selection--multiple{
+      border: none;
+    outline: 0;
+    font-size: 16px;
+}
+}
+</style>
+
+  <script>
+    $('#skill_list').select2({
+      placeholder:'Type to add skills',
+      tags:true,
+      });
+
+    $(".skill").click(function(){
+      $(this).hide();
+      var id = "<?php echo e(url(asset('img'))); ?>"+"/"+$(this).attr('id')+".png";
+      var img = " <img value = "+$(this).attr('id')+" class = 'select skill' src ='"+id+"' style = 'height:3em;margin-left:1%;margin-top:1%;opacity:0.5;transition-duration:1s'>"
+      $('.skillpool').append(img);
+      $('form').append("<input type='hidden' name='skills' value='"+$(this).attr('id')+"'>");
+
+    })
+
+    $(document).on('click','.select',function(e){
+      $(this).addClass('hide');
+      var id = $(this).attr('value');
+      console.log($(this).attr('value'));
+      $("#"+id).show();
+      $("input[type='hidden'][value = '"+id+"']").remove()
+
+    })
+
+    $(".skill").hover(function(){
+      $(this).css('opacity','1')},
+      function(){
+        $(this).css('opacity','0.5')
+      }
+    )
+
+  </script>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('client.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

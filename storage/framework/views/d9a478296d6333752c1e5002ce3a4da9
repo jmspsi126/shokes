@@ -1,0 +1,34 @@
+<?php $__env->startSection('contentPane'); ?>
+
+
+
+<div class="container-fluid">
+	<div class="col-md-12">
+			
+		<div style = "height:350px;background-color:#eee;padding:3%;margin-top:5%">	
+			<p>
+				Documentation Menu
+				<span class="pull-right">
+					<a class="btn btn-success btn-xs" href=<?php echo e(url("/".$name."/wiki/create")); ?>><i class="glyphicon glyphicon-plus"></i></a>
+				</span>
+			</p>
+			<hr style = "border-top:2px solid #EAE4E4;margin-top:10px">
+			<ul>
+				<?php foreach($pages as $page): ?>
+				<li><a href=<?php echo e(url("/".$name."/wiki/".$page->id)); ?>><?php echo e($page->title); ?></a></li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
+
+	</div>
+</div>
+
+
+<script>
+	function goBack(){
+		window.history.back();
+	}
+</script>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('wiki.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

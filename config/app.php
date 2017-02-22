@@ -2,6 +2,8 @@
 
 return [
 
+	//path to mediawiki api file. Example http://mediawiki/api.php
+	'mediawiki_url' => 'http://54.183.191.26/api.php',
 	/*
 	|--------------------------------------------------------------------------
 	| Application Debug Mode
@@ -146,7 +148,13 @@ return [
 		'App\Providers\ConfigServiceProvider',
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
-		'Vinkla\GitLab\GitLabServiceProvider'
+		'Vinkla\GitLab\GitLabServiceProvider',
+		'Laracasts\Flash\FlashServiceProvider',
+		'SimpleSoftwareIO\SMS\SMSServiceProvider',
+		'Intervention\Image\ImageServiceProvider',
+        'Shokse\Notice\NoticeServiceProvider',
+        'Collective\Remote\RemoteServiceProvider',
+
 	],
 
 	/*
@@ -196,7 +204,14 @@ return [
 		'View'      => 'Illuminate\Support\Facades\View',
 		'Form'		=> 'Illuminate\Html\FormFacade',
 		'Html'		=> 'Illuminate\Html\HtmlFacade',
-		'GitLab' 	=> 	'Vinkla\GitLab\Facades\GitLab'
+		'GitLab' 	=> 'Vinkla\GitLab\Facades\GitLab',
+		'Gate' 		=> 'Illuminate\Support\Facades\Gate',
+		'Flash' 	=> 'Laracasts\Flash\Flash',
+		'SMS' 		=> 'SimpleSoftwareIO\SMS\Facades\SMS',
+		'Image' 	=> 'Intervention\Image\Facades\Image',
+		'Notice'    => 'Shokse\Notice\Facades\Notice',
+		'SSH' 		=> 'Collective\Remote\RemoteFacade',
+
 
 	],
 

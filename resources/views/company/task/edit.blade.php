@@ -1,9 +1,7 @@
 @extends('company.main')
 	@section('body')
 		<div class="container-fluid menu-hidden">
-			@include('company.sidebar')
 			<div id="content">
-				@include('company.header')
 				<div class="col-sm-10 col-sm-offset-1" >
 					<div class="widget row widget-inverse">
 	
@@ -50,9 +48,6 @@
 				</div>
 			</div>
 		</div>
-	@stop
-	
+
 	@section('custom-scripts')
 		
-	@stop
-@stop

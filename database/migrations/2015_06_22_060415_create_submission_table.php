@@ -19,12 +19,14 @@ class CreateSubmissionTable extends Migration
             $table->increments('id');
             $table->timestamps();
 
-            $table->integer("project_id")->unsigned();
-            $table->foreign('project_id')->references('id')->on('project');
 
+            $table->integer("task_id")->unsigned();
+            $table->foreign('task_id')->references('id')->on('tasks');
 
-            $table->integer("team_id")->unsigned();
-            $table->foreign('team_id')->references('id')->on('teams');
+            $table->integer("user_id")->unsigned();
+            $table->foreign('user_id')->references('id')->on('student');
+
+            $table->integer('validated')->default('0');
 
             $table->string("file_path");
 

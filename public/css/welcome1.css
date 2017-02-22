@@ -32,6 +32,7 @@
 
 .center{
 	text-align:-webkit-center;
+	text-align:center;
 	/*padding-top:2%;*/
 
 }
@@ -132,7 +133,7 @@ div.navbar_container a:hover{
 
 .studentLogin{
 	position: absolute !important;
-	right: 5px;
+	right: 50px;
 	/* border: solid white 2px; */
 }
 
@@ -327,7 +328,6 @@ div#drawcanvas{
 	border: solid 1px #C7C6C6;
 	display:inline-block;
 	padding:5px 10px;
-	margin-left:45%;
 	color: #C7C6C6;
 	margin-top: 2%;
 }
